@@ -1,0 +1,29 @@
+deposito_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Deposito:new" }
+
+deposito_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Deposito:exportar" }
+
+deposito_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Deposito:create" }
+    requirements: { _method: post }
+
+deposito_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Deposito:edit" }
+
+deposito_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Deposito:update" }
+    requirements: { _method: post|put }
+
+deposito_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Deposito:delete" }
+    requirements: { _method: post|delete }
+deposito:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Deposito:index" , search: ''}

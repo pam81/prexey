@@ -1,0 +1,115 @@
+{% extends '::backend.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+   
+   
+{% endblock %}
+{% block container %}
+    
+       
+        <h4>Listado de Hoja de Ruta de Viajes </h4>
+
+<div class="row-fluid">
+  
+  
+  <div class="span2">   <button class="btn btn-primary" id="exportar_button" data-url="{{ path('exportar_hruta') }}" type="button"  ><i class="icon-file icon-white"></i>Exportar</button> </div>
+  
+    <div class="span9">
+     
+    <form id="custom-search-form" method="get" class="form-search form-horizontal pull-left" action="{{ path('reporte_hruta') }}">
+      
+      <div class="controls form-inline">
+          <input type="text" id="search-deposito" name="deposito" class="input-small" placeholder="Depósito" value="{{ search.deposito }}">
+          <input type="text" id="search-chofer" name="chofer" class="input-small" placeholder="Chofer" value="{{ search.chofer }}">
+          <input type="text" id="search-camion" name="camion" class="input-small" placeholder="Camión" value="{{ search.camion }}">
+          <input type="text" id="search-destino" name="destino" class="input-small" placeholder="Destino" value="{{ search.destino }}">
+          <input type="text" id="search-viaje" name="viaje" class="input-small" placeholder="Nº viaje" value="{{ search.viaje }}">
+          <input type="text" id="search-pedido" name="pedido" class="input-small" placeholder="Nº pedido" value="{{ search.pedido }}">
+          <br> 
+          <input type="checkbox" id="clear-filter" name="clear-filter" value="1">Quitar Filtros
+          <button type="submit" id="search-reporte-button" class="btn" ><i class="icon-search"></i></button>
+      </div>
+      
+      </form>
+    
+    
+    
+    </div>
+    
+  
+    
+ </div>
+    
+    
+    <div class="well">
+    <table class="table">
+    <thead>
+    <tr>
+    
+    <th {% if pagination.isSorted('v.id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nº viaje', 'v.id') }}</th>
+    <th {% if pagination.isSorted('d.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Depósito', 'd.name') }}</th>    
+    <th {% if pagination.isSorted('h.lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Chofer', 'h.lastname') }}</th>
+    <th {% if pagination.isSorted('c.patente') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Camión', 'c.patente') }}</th>
+     <th>Interno</th>
+     <th>Fecha</th>
+    <th>Hora</th>
+    <th>Tipo Viaje</th>
+     <th>Orden</th>
+       <th>Cliente</th>
+       
+    <th {% if pagination.isSorted('u.deposito') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Destino', 'u.deposito') }}</th>
+  
+    <th>Número</th>
+   
+    
+    </tr>
+    </thead>
+    <tbody>
+     {% for hruta in pagination %}
+   
+    
+     <tr>
+                
+                <td>{{ hruta.getViaje.getId }}</td>
+                 <td>{{ hruta.getViaje.getDeposito }}</td> 
+                <td>{{ hruta.getViaje.getChofer }}</td>
+                <td>{{ hruta.getViaje.getCamion }}</td>
+                <td>{{ hruta.getViaje.getCamion.getInterno }}</td>
+                <td>{{ hruta.getViaje.getFechaSalida |date('d-m-Y') }}</td>
+                <td>{{ hruta.getViaje.getHoraSalida |date('H:i') }}</td>
+                 <td>{{ hruta.getViaje.getTipoViaje }}</td>
+                 <td>{{ hruta.getOrden }}</td>
+                <td>{{ hruta.getCliente }}</td>
+                <td>{{ hruta.getDeposito }}</td>
+               
+                <td>{{ hruta.getNumero }}</td>
+                
+               
+                
+                                                  
+    </tr>
+    
+    {% endfor %}
+   
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="pagination">
+     {{ knp_pagination_render(pagination) }}
+    
+    </div>
+    
+   
+    
+    
+    {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+ 
+   
+   
+{% javascripts '@BackendAdminBundle/Resources/public/js/exportar_reporte.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %} 
+{% endblock %}

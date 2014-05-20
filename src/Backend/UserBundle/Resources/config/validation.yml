@@ -1,0 +1,72 @@
+Backend\UserBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank: { message: Olvido ingresar un Username }
+            - Length: 
+                min: 4
+                max: 25
+                minMessage: "El username debe tener al menos 4 carácteres"
+                maxMessage: "El username debe tener 25 carácteres máximo"
+        name:
+            - NotBlank: { message: Olvido ingresar el Nombre }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 100 carácteres máximo"
+        lastname:  
+            - NotBlank: { message: Olvido ingresar el Apellido }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El Apellido debe tener al menos 2 carácteres"
+                maxMessage: "El Apellido debe tener 100 carácteres máximo"
+        email: 
+            - NotBlank: { message: Ingrese un email }
+            - Email: { message: Ingrese un email válido }
+            - Length: 
+                min: 4
+                max: 60
+                minMessage: "El email debe tener al menos 4 carácteres"
+                maxMessage: "El email debe tener 60 carácteres máximo"  
+        groups:
+            - NotBlank: { message: Debe seleccionar al menos un Grupo }  
+        nroEmpleado:                                                
+            - NotBlank: { message: Ingrese el número de empleado }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El número de empleado debe tener al menos 2 carácteres"
+                maxMessage: "El número de empleado debe tener 100 carácteres máximo"
+
+Backend\UserBundle\Entity\Group:
+    properties:   
+        name:
+            - NotBlank: { message: Olvido ingresar el Nombre }
+            - Length: 
+                min: 2
+                max: 30
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 30 carácteres máximo"
+        role:
+            - NotBlank: { message: Olvido ingresar el rol }
+            - Length: 
+                min: 2
+                max: 20
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 20 carácteres máximo"
+Backend\UserBundle\Entity\Seteo:
+    properties:   
+        name:
+            - NotBlank: { message: Olvido ingresar el Nombre }
+            - Length: 
+                min: 2
+                max: 200
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 200 carácteres máximo"
+        value:
+            - NotBlank: { message: Olvido ingresar el valor }
+            - Length: 
+                max: 100
+                maxMessage: "El nombre debe tener 100 carácteres máximo"
+                     

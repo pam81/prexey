@@ -1,0 +1,100 @@
+{% extends '::backend.html.twig' %}
+
+{% block container %}
+    
+        <h4>Listado de Tipo de Movimientos de Caja </h4>
+
+<div class="row-fluid">
+  
+  
+  <div class="span2"> {% if is_granted("ROLE_ADDTIPOMOVIMIENTO") %}  <button class="btn btn-primary" type="button" id="new_button" data-url="{{ path('tipomovimiento_new') }}" >Agregar Movimiento</button> {% endif %} </div>
+  
+    <div class="span3">
+     
+    <form id="custom-search-form" class="form-search form-horizontal pull-right" action="#">
+      <div class="input-append span12">
+      <input type="text" class="search-query" id="search-query" placeholder="Buscar" value="{{ search }}">
+      <button type="button" id="search-button" class="btn" data-url="{{ path('tipomovimiento') }}" ><i class="icon-search"></i></button>
+      </div>
+      </form>
+    
+    
+    
+    </div>
+    
+  
+    
+ </div>
+    
+    
+    <div class="well">
+    <table class="table">
+    <thead>
+    <tr>
+    
+    <th {% if pagination.isSorted('u.code') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Código', 'u.code') }}</th>
+    <th>Descripción</th>
+    <th style="width: 36px;">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+     {% for tipo in pagination %}
+   
+    
+     <tr>
+                
+                <td>{{ tipo.code }} </td>
+                <td>{{ tipo.texto }}</td>
+                <td>
+                {% if is_granted("ROLE_MODTIPOMOVIMIENTO") %}
+                <a href="{{ path('tipomovimiento_edit', { 'id': tipo.id }) }}"><i class="icon-pencil"></i></a>
+                {% endif %}
+                {% if is_granted("ROLE_DELTIPOMOVIMIENTO") %}
+                <a href="#myModal" role="button" class="confirm-delete" data-toggle="modal" data-id={{ tipo.id }} ><i class="icon-remove"></i></a>
+                {% endif %}
+                </td>
+    </tr>
+    
+    {% endfor %}
+   
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="pagination">
+     {{ knp_pagination_render(pagination) }}
+    
+    </div>
+    
+    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Confirmar Borrado</h3>
+     </div>
+     <div class="modal-body">
+       <p class="error-text">Esta seguro que desea borrar el tipo movimiento seleccionado?</p>
+     </div>
+     <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+      <button class="btn btn-danger " data-id="0"  data-url="{{ path('tipomovimiento_delete', { 'id': 'id' }) }}">Borrar</button>
+     </div>
+    </div>
+    
+    
+    <form action="" id="delete-form" method="post" {{ form_enctype(delete_form) }}>
+    {{ form_widget(delete_form) }}
+    <input type="hidden" value="DELETE" name="_method">
+    
+    </form>
+    
+    
+    {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+ 
+{% javascripts '@BackendAdminBundle/Resources/public/js/search_index.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+   
+  
+{% endblock %}

@@ -1,0 +1,25 @@
+.required:before {
+    content: "*";
+    color: #b94a48;
+    
+    font-size: 14px;
+}
+.required{
+font-weight: bold !important;
+}
+.error ul{
+  list-style: none;
+} 
+
+.pager_up{
+ float:right;
+ margin-top: -20px;
+}
+
+.pager_down{
+ text-align:right;
+ 
+}
+.red_row{
+background-color: #EB9C9C;
+}

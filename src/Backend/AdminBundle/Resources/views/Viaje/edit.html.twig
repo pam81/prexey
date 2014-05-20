@@ -1,0 +1,101 @@
+{% extends '::backend.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}"  >
+    <link rel="stylesheet" href="{{ asset('css/select2.css') }}"  >
+   {% stylesheets '@BackendAdminBundle/Resources/public/css/viaje.css' %}   
+     <link rel="stylesheet" href="{{ asset_url }}"  >
+   {% endstylesheets %}
+{% endblock %}
+{% block container -%}
+
+
+{% set active=2 %}
+{% include 'BackendAdminBundle:Viaje:menu_viaje.html.twig' %}
+ 
+
+
+
+    <div class="well">
+    <div id="myTabContent" class="tab-content">
+    <div class="tab-pane active in" id="home">
+    <form class="form-horizontal" id="tabviaje" data-valid_url="{{ path('viaje_validate',{ id: entity.id }) }}" name="tabviaje" method="post" novalidate="true"    action="{{ path('viaje_update',{ id: entity.id }) }}" >
+     {{ form_errors(form) }}
+   
+
+    
+    {% include 'BackendAdminBundle:Viaje:_viaje.html.twig' %} 
+
+    
+    {{ form_rest(form) }}
+
+    <div class="control-group">
+    <!-- Button -->
+    <div class="controls">
+    {% if entity.getEstado.code != 'ANULADO' and entity.getEstado.code != 'PENDIENTE' and entity.getEstado.code != 'RENDIDO' %}
+    <button type="submit" name="action" value="borrador" class="btn "><i class="icon-white "></i>Borrador</button>
+     {% endif %}
+    {% if entity.getEstado.code != 'ANULADO' and entity.getEstado.code != 'RENDIDO' %}
+      
+    <button type="submit" name="action" value="confirmar" class="btn btn-primary"><i class="icon-white"></i>Confirmar</button>
+    {% endif %}
+    {% if entity.getEstado.code == 'RENDIDO' and is_granted('ROLE_ADMIN')%}
+    <!-- Si esta rendido pero es administrador si dejar modificar -->
+    <button type="submit" name="action" value="confirmar" class="btn btn-primary"><i class="icon-white"></i>Confirmar</button>
+    {% endif %}
+    {% if entity.getEstado.code == 'PENDIENTE' %}
+   <a href="{{ path('viaje_rendir',{ 'id': entity.id }) }}" class="btn btn-success"> <i class="icon-white"></i> Rendir</a>
+    {% endif %}
+    {% if entity.getEstado.code == 'RENDIDO' or entity.getEstado.code == 'ANULADO'  %}
+    <a href="{{ path('viaje_rendir',{ 'id': entity.id }) }}" class="btn btn-info"><i class="icon-white"></i> Ver Rendición</a>
+    {% endif %}
+    {% if entity.getEstado.code != 'RENDIDO' %}
+    <button type="submit" name="action" value="anular" class="btn btn-danger"><i class="icon-white"></i> Anular</button>
+    {% endif %}
+    {% if entity.getEstado.code == 'PENDIENTE' %}
+      <a href="{{ path('viaje_print',{ id:entity.id }) }}" class="btn "> <i class="icon-white"></i> Imprimir</a>
+    {% endif %}
+    <button type="button" class="btn btn-inverse" data-url="{{ path('viaje') }}" ><i class="icon-chevron-left icon-white"></i> Cancelar</button>
+    </div> <!-- controls -->
+    
+     </div> <!-- control-group -->
+    </form>
+   
+    
+    </div>
+    </div>
+    </div>
+
+
+   
+    <div class="modal small hide " style="width: 80px; text-align: center;" id="myLoading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+     
+     <div class="modal-body">
+       <p class="error-text"> <img src="{{ asset("img/loading.gif") }}"  width="32" height="32" /></p>
+     </div>
+    
+    </div>
+   
+   <div class="modal small hide " style="width: 80px; text-align: center;" id="myModalLoading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+     
+     <div class="modal-body">
+       <p class="error-text"> <img src="{{ asset("img/loading.gif") }}"  width="32" height="32" /></p>
+     </div>
+    
+    </div>
+
+       
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+   <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+   <script src="{{ asset('js/locales/bootstrap-datetimepicker.es.js') }}"></script>
+    <script src="{{ asset('js/selectbox/select2.js') }}"></script>
+    <script src="{{ asset('js/selectbox/select2_locale_es.js') }}"></script>
+{% javascripts '@BackendAdminBundle/Resources/public/js/validate_viaje.js' %}       
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts '@BackendAdminBundle/Resources/public/js/viaje.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,30 @@
+seteo:
+    pattern:  /
+    defaults: { _controller: "BackendUserBundle:Seteo:index" }
+
+seteo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendUserBundle:Seteo:show" }
+
+seteo_new:
+    pattern:  /new
+    defaults: { _controller: "BackendUserBundle:Seteo:new" }
+
+seteo_create:
+    pattern:  /create
+    defaults: { _controller: "BackendUserBundle:Seteo:create" }
+    requirements: { _method: post }
+
+seteo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendUserBundle:Seteo:edit" }
+
+seteo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendUserBundle:Seteo:update" }
+    requirements: { _method: post|put }
+
+seteo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendUserBundle:Seteo:delete" }
+    requirements: { _method: post|delete }

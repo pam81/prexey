@@ -1,0 +1,26 @@
+tipoviaje_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:TipoViaje:new" }
+
+tipoviaje_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:TipoViaje:create" }
+    requirements: { _method: post }
+
+tipoviaje_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:TipoViaje:edit" }
+
+tipoviaje_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:TipoViaje:update" }
+    requirements: { _method: post|put }
+
+tipoviaje_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:TipoViaje:delete" }
+    requirements: { _method: post|delete }
+
+tipoviaje:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:TipoViaje:index",  search: ''}

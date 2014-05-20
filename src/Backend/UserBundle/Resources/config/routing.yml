@@ -1,0 +1,35 @@
+user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendUserBundle:User:show" }
+
+user_new:
+    pattern:  /new_user
+    defaults: { _controller: "BackendUserBundle:User:new" }
+
+user_create:
+    pattern:  /create_user
+    defaults: { _controller: "BackendUserBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    pattern:  /{id}/edit_user
+    defaults: { _controller: "BackendUserBundle:User:edit" }
+
+user_update:
+    pattern:  /{id}/update_user
+    defaults: { _controller: "BackendUserBundle:User:update" }
+    requirements: { _method: post|put }
+
+user_delete:
+    pattern:  /{id}/delete_user
+    defaults: { _controller: "BackendUserBundle:User:delete" }
+    requirements: { _method: get|post|delete }
+
+profile:
+    path: /profile
+    defaults: { _controller:BackendUserBundle:User:profile }
+
+user:
+    pattern:  /{search}
+    defaults: { _controller: "BackendUserBundle:User:index", search: '' }
+

@@ -1,0 +1,56 @@
+reporte_cerrados:
+    pattern:  /cerrados
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteViajesCerrados" }
+
+exportar_cerrados:
+    pattern:  /exportar_cerrados
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarCerrados" }
+    
+reporte_costos:
+    pattern:  /costos
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteCostos" }
+
+exportar_costos:
+    pattern:  /exportar_costos
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarCostos" }
+
+reporte_hruta:
+    pattern:  /hruta
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteHruta" }
+
+exportar_hruta:
+    pattern:  /exportar_hruta
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarHruta" }        
+
+reporte_dtosueldo:
+    pattern:  /dto_sueldo
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteDescuentoSueldo" }
+
+exportar_dtosueldo:
+    pattern:  /exportar_dtosueldo
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarDescuentoSueldo" }
+
+reporte_eficiencia:
+    pattern:  /eficiencia
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteEficienciaCamiones" }
+
+exportar_eficiencia:
+    pattern:  /exportar_eficiencia
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarEficiencia" }
+
+reporte_cashflow:
+    pattern:  /cashflow
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteCashflow" }
+    
+exportar_cashflow:
+    pattern:  /exportar_cashflow
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarCashFlow" }    
+    
+reporte_cajacentral:
+    pattern:  /cajacentral
+    defaults: { _controller: "BackendAdminBundle:Reporte:reporteCajaCentral" }
+    
+exportar_caja:
+    pattern:  /exportar_caja
+    defaults: { _controller: "BackendAdminBundle:Reporte:exportarCaja" }
+            

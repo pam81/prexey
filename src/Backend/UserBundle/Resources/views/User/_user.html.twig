@@ -1,0 +1,107 @@
+ <div class="control-group">
+
+{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_userbundle_usertype_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
+  
+</div>
+</div>
+    
+     
+    <div class="control-group">
+
+{{ form_label(form.lastname,"Apellido", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.lastname, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+    <div id='backend_userbundle_usertype_lastname_errorloc' class="help-inline error" >{{ form_errors(form.lastname) }}</div>
+</div>
+</div>
+ 
+  
+   
+        <div class="control-group">
+
+{{ form_label(form.email,"Email", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.email, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+ <div id='backend_userbundle_usertype_email_errorloc' class="help-inline error" >{{ form_errors(form.email) }}</div>   
+</div>
+</div>
+ 
+    <div class="control-group">
+
+{{ form_label(form.username,"Username", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.username, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_username_errorloc' class="help-inline error" >{{ form_errors(form.username) }}</div>  
+</div>
+</div>
+    
+      <div class="control-group">
+
+{{ form_label(form.password.first,"Contraseña", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.password.first, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+    <div id='backend_userbundle_usertype_password_firt_errorloc' class="help-inline error" >{{ form_errors(form.password.first) }}</div>
+</div>
+</div>
+      
+   
+     <div class="control-group">
+
+{{ form_label(form.password.second,"Repetir Contraseña", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.password.second, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_password_second_errorloc' class="help-inline error" >{{ form_errors(form.password.second) }}</div>   
+</div>
+</div>
+   
+       <div class="control-group">
+
+{{ form_label(form.groups,"Grupo", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.groups, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_groups_errorloc' class="help-inline error" >{{ form_errors(form.groups) }}</div>  
+</div>
+</div>  
+    
+    
+    <div class="control-group" id="list_depositos" style="display: none;">
+
+{{ form_label(form.deposito,"Depósito", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.deposito, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_deposito_errorloc' class="help-inline error" >{{ form_errors(form.deposito) }}</div>  
+</div>
+</div>  
+     
+            <div class="control-group">
+
+{{ form_label(form.nroEmpleado,"Nro. Empleado", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.nroEmpleado, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_nroEmpleado_errorloc' class="help-inline error" >{{ form_errors(form.nroEmpleado) }}</div>  
+</div>
+</div>
+     
+     
+     
+     
+     <div class="control-group">
+
+{{ form_label(form.is_active,"Activo", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+  {{ form_widget(form.is_active, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+   <div id='backend_userbundle_usertype_is_active_errorloc' class="help-inline error" >{{ form_errors(form.is_active) }}</div> 
+</div>
+</div> 

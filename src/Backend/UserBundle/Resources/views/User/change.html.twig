@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+
+
+<form class="form-horizontal" action='' method="POST" name="formChange" id="formChange">
+  <fieldset>
+    <div id="legend">
+      <legend class="">Cambiar Contraseña</legend>
+    </div>
+    <p>Ingrese una nueva contraseña. </p>
+    <div class="control-group">
+      <label class="control-label"  for="password">Contraseña</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+        <div id='formChange_password_errorloc' class="help-inline error" ></div>
+      </div>
+      
+    </div>
+
+    <div class="control-group">
+      <label class="control-label"  for="confirm">Confirmar Contraseña</label>
+      <div class="controls">
+        <input type="password" id="confirm" name="confirm" placeholder="" class="input-xlarge">
+        <div id='formChange_confirm_errorloc' class="help-inline error" ></div>
+      </div>
+      
+    </div>
+
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <input type="hidden" name="codigo" id="codigo" value="{{ codigo }}" />
+        <button id="btn_change" type="button" class="btn btn-success" data-url="{{ path('change_pass') }}">Enviar</button>  
+        <a href="{{ path('login') }}" class="btn btn-link">Ir a Login del sitio</a>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+ {% javascripts '@BackendUserBundle/Resources/public/js/change_pass.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% endblock %}

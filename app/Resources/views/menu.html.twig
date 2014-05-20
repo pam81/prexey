@@ -1,0 +1,148 @@
+<div class="nav-collapse collapse">
+                {% if not is_granted('ROLE_VISITOR') %}
+                
+                <ul class="nav">
+                    {% if is_granted('ROLE_VIEWUSER') %}
+                    <li><a href="{{ path('user') }}">Usuarios</a></li>
+                    {% endif %}
+                    
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SETEO') or is_granted('ROLE_VIEWTIPOMOVIMIENTO') or is_granted('ROLE_VIEWTIPOCOSTO') %}
+                    <li class="dropdown">           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('group') }}">Accesos</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_SETEO') %}
+                            <li class="divider"></li>
+                            <li><a href="{{ path('seteo') }}">Seteos</a></li>
+                        {% endif %}
+                       {% if is_granted('ROLE_VIEWTIPOMOVIMIENTO') %}
+                            <li class="divider"></li>
+                            <li><a href="{{ path('tipomovimiento') }}">Tipo Movimiento</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_VIEWTIPOCOSTO') %}
+                            <li class="divider"></li>
+                            <li><a href="{{ path('tipocosto') }}">Tipo Costo</a></li>
+                        {% endif %}                     
+                         {% if is_granted('ROLE_VIEWTIPOVIAJE') %}
+                            <li class="divider"></li>
+                            <li><a href="{{ path('tipoviaje') }}">Tipo Viaje</a></li>
+                        {% endif %}
+                      </ul>
+                    
+                    </li>
+                    {% endif %}
+                    
+                    {% if is_granted('ROLE_VIEWCAMION') or is_granted('ROLE_VIEWCHOFER')  or is_granted('ROLE_VIEWCLIENTE') 
+                    or is_granted('ROLE_VIEWDEPOSITO')  or is_granted('ROLE_VIEWEMPRESA')
+                     %}
+                    
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Entidades<b class="caret"></b></a>
+                      <ul class="dropdown-menu" >
+                        {% if is_granted('ROLE_VIEWCAMION') %}
+                       <li> <a href="{{ path('camion') }}"> Camiones</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWCHOFER') %}
+                       <li> <a href="{{ path('chofer') }}"> Choferes</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWCLIENTE') %}
+                       <li> <a href="{{ path('cliente') }}"> Clientes</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                        {% if is_granted('ROLE_VIEWEMPRESA') %}
+                       <li> <a href="{{ path('empresa') }}"> Empresas</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWDEPOSITO') %}
+                       <li> <a href="{{ path('deposito') }}"> Depósitos</a> </li>
+                      
+                       {% endif %}
+                       
+                      </ul>
+                      </li> 
+                      
+                        {% endif %}
+                     {% if is_granted('ROLE_VIEWVIAJE') %}
+                       <li> <a href="{{ path('viaje_pendientes') }}"> Viajes</a> </li>
+                     {% endif %} 
+
+                     {% if is_granted('ROLE_VIEWCAJA') or is_granted('ROLE_CAJAEMPLEADO') %}
+                     <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cajas<b class="caret"></b></a>
+                      <ul class="dropdown-menu" >
+                        {% if is_granted('ROLE_VIEWCAJA') %}
+                         <li><a href="{{ path('caja') }}">Caja</a></li>
+                         <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_CAJAEMPLEADO') %}
+                         <li><a href="{{ path('caja_empleado') }}">Caja Empleado</a></li>
+                        
+                       {% endif %}
+                      </ul>
+                      </li> 
+                      {% endif %}
+                     
+                    
+                      
+                 {% if is_granted('ROLE_REPODTOSUELDO') or is_granted('ROLE_REPOEFICIENCIA') or is_granted('ROLE_REPOCASHFLOW') or 
+                 is_granted('ROLE_REPOCAJA') or is_granted('ROLE_REPOCERRADO') %}     
+                      
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+                    <ul class="dropdown-menu" >
+                     {% if is_granted('ROLE_REPODTOSUELDO') %}
+                       <li> <a href="{{ path('reporte_dtosueldo') }}">Descuento de Sueldos</a>  </li>
+                        <li class="divider"></li>
+                      {% endif %} 
+                      {% if is_granted('ROLE_REPOEFICIENCIA') %}
+                       <li> <a href="{{ path('reporte_eficiencia') }}">Eficiencia de Camiones</a>  </li>
+                        <li class="divider"></li>
+                      {% endif %}  
+                       {% if is_granted('ROLE_REPOCASHFLOW') %}
+                       <li> <a href="{{ path('reporte_cashflow') }}">Cashflow</a>  </li>
+                        <li class="divider"></li>
+                        {% endif %}   
+                        {% if is_granted('ROLE_REPOCAJA') %}
+                       <li> <a href="{{ path('reporte_cajacentral') }}">Caja General</a>  </li>
+                        <li class="divider"></li>
+                       {% endif %}   
+                        {% if is_granted('ROLE_REPOCERRADO') %} 
+                       <li> <a href="{{ path('reporte_cerrados') }}">Viajes Cerrados</a>  </li>
+                        <li class="divider"></li>
+                       {% endif %} 
+                       {% if is_granted('ROLE_REPOCOSTOS') %} 
+                       <li> <a href="{{ path('reporte_costos') }}">Costos</a>  </li>
+                        <li class="divider"></li>
+                       {% endif %} 
+                       {% if is_granted('ROLE_REPOHRUTA') %} 
+                       <li> <a href="{{ path('reporte_hruta') }}">Hoja de Ruta </a>  </li>
+                       {% endif %}
+                    </ul>
+                    </li>
+                   
+                    {% endif %} 
+                    
+                </ul>
+              {% endif %}  
+                
+             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                
+                <ul class="nav pull-right">
+                   
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} {% if is_granted('ROLE_DEPOSITO') %}- Depósito {{ app.user.deposito}} {% endif %}   <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('profile') }}">Perfil</a></li>
+                            
+                            <li class="divider"></li>
+                            <li><a href="{{ path('logout') }}">Salir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                {% endif %}    
+              
+             
+            </div><!--/.nav-collapse -->

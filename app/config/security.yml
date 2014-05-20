@@ -1,0 +1,53 @@
+security:
+    access_denied_url: access_denied
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Backend\UserBundle\Entity\User: 
+            algorithm: sha1
+            encode_as_base64: false
+            iterations:       1
+
+   # role_hierarchy:
+   #     ROLE_ADMIN:       ROLE_DEPOSITO
+   #     ROLE_SUPER_ADMIN: [ROLE_DEPOSITO, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        administrators:
+          entity: { class: BackendUserBundle:User}
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        
+         
+        login:
+            pattern:  ^/panel/login$
+            #security: false
+            anonymous:  ~
+            
+        
+                    
+        secured_area:
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~
+            pattern:    /panel
+            form_login:
+                check_path: /panel/login_check
+                login_path: /panel/login
+            logout:
+                path: /panel/logout
+                target: /panel/login
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+            
+             
+    access_control:
+        - { path: ^/panel/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/panel, roles: IS_AUTHENTICATED_REMEMBERED }
+        

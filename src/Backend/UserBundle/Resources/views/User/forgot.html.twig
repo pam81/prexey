@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+
+
+<form class="form-horizontal" action='' method="POST" name="formForgot" id="formForgot">
+  <fieldset>
+    <div id="legend">
+      <legend class="">Cambiar Contraseña</legend>
+    </div>
+    <p>Ingrese su Usuario o Email para poder cambiar su contraseña. </p>
+    <div class="control-group">
+   
+      <label class="control-label"  for="username">Email / Username</label>
+      <div class="controls">
+        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+        <div id='formForgot_email_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button id="btn_forgot" type="button" class="btn btn-success" data-url="{{ path('forgot_pass') }}">Enviar</button>  
+        <a href="{{ path('login') }}" class="btn btn-link">Ir a Login del sitio</a>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+ {% javascripts '@BackendUserBundle/Resources/public/js/forgot_pass.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% endblock %}

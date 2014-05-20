@@ -1,0 +1,77 @@
+viaje_validate:
+    pattern:  /validate/{id}
+    defaults: { _controller: "BackendAdminBundle:Viaje:validateViaje",id:'' }
+
+viaje_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Viaje:exportar" }
+
+viaje_validate_rendir:
+    pattern:  /validate_rendir/{id}
+    defaults: { _controller: "BackendAdminBundle:Viaje:validateRendir",id:'' }
+
+viaje_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Viaje:new" }
+
+viaje_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Viaje:edit" }
+
+viaje_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Viaje:update" }
+    requirements: { _method: post|put }
+
+viaje_print:
+    pattern:  /{id}/print
+    defaults: { _controller: "BackendAdminBundle:Viaje:printViaje" }
+
+rendicion_print:
+    pattern:  /{id}/rendicion_print
+    defaults: { _controller: "BackendAdminBundle:Viaje:printRendicion" }
+
+viaje_pendientes:
+    pattern:  /pendientes/{search}
+    defaults: { _controller: "BackendAdminBundle:Viaje:getPendientes", search: '' }
+
+viaje_cliente:
+    pattern:  /getCliente
+    defaults: { _controller: "BackendAdminBundle:Viaje:getClientes" }
+    
+viaje_deposito:
+    pattern:  /getDeposito
+    defaults: { _controller: "BackendAdminBundle:Viaje:getDepositos" }
+
+viaje_especifico:
+    pattern:  /getViaje
+    defaults: { _controller: "BackendAdminBundle:Viaje:getViaje" }    
+
+viaje_deposito_salida:
+    pattern:  /getDepositoSalida
+    defaults: { _controller: "BackendAdminBundle:Viaje:getDepositosSalida" }    
+
+viaje_rendir:
+    pattern:  /{id}/rendir
+    defaults: { _controller: "BackendAdminBundle:Viaje:rendir" }
+
+viaje_saverendir:
+    pattern:  /{id}/save_rendir
+    defaults: { _controller: "BackendAdminBundle:Viaje:saveRendir" }
+
+tipo_costos:
+    pattern:  /getTipoCostos
+    defaults: { _controller: "BackendAdminBundle:Viaje:getTipoCostos" }
+
+viaje_chofer:
+    pattern:  /getViajeChofer
+    defaults: { _controller: "BackendAdminBundle:Viaje:getViajeChofer" }
+
+viaje_hoja_ruta:
+    pattern:  /getHojaRuta/{id}
+    defaults: { _controller: "BackendAdminBundle:Viaje:getHojaRuta",id:'' }
+    
+        
+viaje:
+    pattern:  /
+    defaults: { _controller: "BackendAdminBundle:Viaje:index" }

@@ -1,0 +1,110 @@
+{% extends '::backend.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}"  >
+   
+{% endblock %}
+{% block container %}
+    
+       
+        <h4>Listado de Movimientos - Caja Central </h4>
+
+<div class="row-fluid">
+  
+  
+  <div class="span2">   <button class="btn btn-primary" id="exportar_button" data-url="{{ path('exportar_caja') }}" type="button"  ><i class="icon-file icon-white"></i>Exportar</button> </div>
+  
+    <div class="span9">
+     
+    <form id="custom-search-form" method="get" class="form-search form-horizontal pull-left" action="{{ path('reporte_cajacentral') }}">
+      
+      <div class="controls form-inline">
+          
+          
+          <input type="text" id="search-deposito" name="deposito" class="input-small" placeholder="Depósito" value="{{ search.deposito }}">
+          <input type="text" id="search-categoria" name="categoria" class="input-small" placeholder="Categoría" value="{{ search.categoria }}">
+          <input type="text" id="search-monto" name="monto" class="input-small" placeholder="Monto" value="{{ search.monto }}">
+          <select name="tipo" id="search-tipo" placeholder="Tipo">
+             <option value=""></option>
+             <option value="e" {% if search.tipo == "e" %} selected="selected" {% endif %} >Egreso</option>
+             <option value="i" {% if search.tipo == "i" %} selected="selected" {% endif %} >Ingreso</option>
+          </select>
+           
+          <input type="checkbox" id="clear-filter" name="clear-filter" value="1">Quitar Filtros
+          <button type="submit" id="search-reporte-button" class="btn" ><i class="icon-search"></i></button>
+      </div>
+      
+      </form>
+    
+    
+    
+    </div>
+    
+  
+    
+ </div>
+    
+    
+    <div class="well">
+    <table class="table">
+    <thead>
+    <tr>
+    
+    <th {% if pagination.isSorted('u.fecha') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Fecha', 'u.fecha') }}</th>
+    <th {% if pagination.isSorted('e.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Depósito Destino', 'e.name') }}</th>
+    <th {% if pagination.isSorted('c.texto') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Categoría', 'c.texto') }}</th>
+    <th>Descripción</th>
+    <th {% if pagination.isSorted('u.monto') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Monto', 'u.monto') }}</th>
+    <th {% if pagination.isSorted('u.saldo_deposito') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Saldo', 'u.saldo_deposito') }}</th>
+    <th {% if pagination.isSorted('u.tipo') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tipo', 'u.tipo') }}</th>
+    </tr>
+    </thead>
+    <tbody>
+     {% for movimiento in pagination %}
+   
+    
+     <tr>
+                
+                <td>{{ movimiento.getFecha |date('d-m-Y') }}</td>
+                <td> {{ movimiento.getDepositoDestino }} </td>
+                <td> {{ movimiento.getClase.getTexto }} </td>
+                <td>{{ movimiento.getMotivo  }}</td>
+                <td>${{ movimiento.getMonto }}</td>
+                <td>${{ movimiento.getSaldoDeposito }}</td>
+                 <td>{% if  movimiento.tipo == 'i' %}
+                  <span class="label label-success">Ingreso</span>
+                  {% else %}
+                  <span class="label label-important">Egreso</span>
+                  {% endif %}
+                </td>
+               
+  </tr>
+    
+    {% endfor %}
+   
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="pagination">
+     {{ knp_pagination_render(pagination) }}
+    
+    </div>
+    
+   
+    
+    
+    {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+ 
+   <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+   <script src="{{ asset('js/locales/bootstrap-datetimepicker.es.js') }}"></script>
+   
+{% javascripts '@BackendAdminBundle/Resources/public/js/exportar_reporte.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %} 
+{% javascripts '@BackendAdminBundle/Resources/public/js/cajacentral.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %} 
+{% endblock %}

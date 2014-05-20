@@ -1,0 +1,184 @@
+Backend\AdminBundle\Entity\Cliente:
+    properties:
+        name:
+            - NotBlank: { message: Olvido ingresar el Nombre }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 100 carácteres máximo"
+        direccion:  
+            - NotBlank: { message: Olvido ingresar la dirección }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "La dirección debe tener al menos 2 carácteres"
+                maxMessage: "La dirección puede tener 100 carácteres máximo"
+        observacion: 
+            - Length: 
+                max: 500
+                maxMessage: "La observación puede tener 500 carácteres máximo"  
+        email:
+            - Email: { message: Ingrese un email válido } 
+Backend\AdminBundle\Entity\Camion:
+    properties:
+        patente:
+            - NotBlank: { message: Olvido ingresar el número de patente }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "La patente debe tener al menos 2 carácteres"
+                maxMessage: "La patente puede tener 100 carácteres máximo"
+        kmxlitro:
+            - Length: 
+                max: 100
+                maxMessage: "Km/litro debe tener 100 carácteres máximo"
+        eficiencia_ideal:
+              - NotBlank: { message: Olvido ingresar el valor de eficiencia ideal }
+        maxTanque:
+            - NotBlank: { message: Olvido ingresar capacidad del tanque }
+            - Length: 
+                max: 100
+                maxMessage: "La capacidad del tanque puede tener 100 carácteres máximo"        
+        observacion: 
+            - Length: 
+                max: 500
+                maxMessage: "La observación puede tener 500 carácteres máximo" 
+        marca: 
+            - Length: 
+                max: 100
+                maxMessage: "La marca puede tener 100 carácteres máximo"
+        modelo: 
+            - Length: 
+                max: 100
+                maxMessage: "El modelo puede tener 100 carácteres máximo"
+        color: 
+            - Length: 
+                max: 100
+                maxMessage: "El color puede tener 100 carácteres máximo"
+Backend\AdminBundle\Entity\Deposito:
+    properties:
+        name:
+            - NotBlank: { message: Olvido ingresar el Nombre }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 100 carácteres máximo"
+        direccion:  
+            - NotBlank: { message: Olvido ingresar la dirección }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "La dirección debe tener al menos 2 carácteres"
+                maxMessage: "La dirección puede tener 100 carácteres máximo"
+        observacion: 
+            - Length: 
+                max: 500
+                maxMessage: "La observación puede tener 500 carácteres máximo"
+        lat: 
+            - Length: 
+                max: 100
+                maxMessage: "La observación puede tener 100 carácteres máximo"
+        lng: 
+            - Length: 
+                max: 100
+                maxMessage: "La observación puede tener 100 carácteres máximo"                
+        cliente:  
+            - NotBlank: { message: Olvido ingresar el cliente }                  
+Backend\AdminBundle\Entity\Chofer:
+    properties:
+        name:
+            - NotBlank: { message: Olvido ingresar el Nombre }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El nombre debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 100 carácteres máximo"
+        lastname:
+            - NotBlank: { message: Olvido ingresar el Apellido }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El apellido debe tener al menos 2 carácteres"
+                maxMessage: "El apellido debe tener 100 carácteres máximo"                
+        direccion:  
+            - Length: 
+                max: 100
+                maxMessage: "La dirección puede tener 100 carácteres máximo"
+        observacion: 
+            - Length: 
+                max: 500
+                maxMessage: "La observación puede tener 500 carácteres máximo" 
+        nroEmpleado:  
+            - NotBlank: { message: Olvido ingresar el número de empleado }
+            - Length: 
+                min: 2
+                max: 100
+                minMessage: "El número de empleado debe tener al menos 2 carácteres"
+                maxMessage: "El número de empleado puede tener 100 carácteres máximo"       
+        dni:  
+            - Length: 
+                max: 100
+                maxMessage: "El número de dni puede tener 100 carácteres máximo"     
+
+        email:  
+            - Email: { message: No es un formato de email válido }
+            - Length: 
+                max: 100
+                maxMessage: "El email puede tener 100 carácteres máximo"
+        celular:  
+            - Length: 
+                max: 100
+                maxMessage: "El celular puede tener 100 carácteres máximo"
+        radio:  
+            - Length: 
+                max: 100
+                maxMessage: "El nro de radio puede tener 100 carácteres máximo"
+        telefono:  
+            - Length: 
+                max: 100
+                maxMessage: "El teléfono puede tener 100 carácteres máximo"
+                                                        
+Backend\AdminBundle\Entity\Viaje:
+    properties:
+        efectivo:    
+            - NotBlank: { message: Olvido ingresar Efectivo }
+        fecha_salida:    
+            - NotBlank: { message: Olvido ingresar Fecha Salida }
+        fecha_regreso:
+            - NotBlank: { message: Olvido ingresar Fecha Regreso }
+        hora_salida:
+            - NotBlank: { message: Olvido ingresar Hora Salida }
+        hora_regreso:
+            - NotBlank: { message: Olvido ingresar Hora Regreso }
+        deposito:
+            - NotBlank: { message: Olvido ingresar Depósito }
+        cliente:
+            - NotBlank: { message: Olvido ingresar Cliente }
+        chofer:
+            - NotBlank: { message: Olvido ingresar Chofer }
+        camion:
+            - NotBlank: { message: Olvido ingresar Camión } 
+        km_retorno:
+            - NotBlank: { message: Ingresar Km Retorno , groups: [rendicion]}
+        efectivo_retornado:
+            - NotBlank: { message: Ingresar Efectivo Retornado, groups: [rendicion] }                                       
+Backend\AdminBundle\Entity\TipoMovimiento:
+    properties:
+        code:
+            - NotBlank: { message: Olvido ingresar el código }
+        texto:
+            - NotBlank: { message: Olvido ingresar una descripción }
+Backend\AdminBundle\Entity\TipoViaje:
+    properties:
+        code:
+            - NotBlank: { message: Olvido ingresar el código }
+        texto:
+            - NotBlank: { message: Olvido ingresar una descripción }                 
+Backend\AdminBundle\Entity\Movimiento:
+    properties:
+        monto:
+            - Type: 
+                type: double
+                message: Ingrese un número válido

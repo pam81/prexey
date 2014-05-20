@@ -1,0 +1,29 @@
+cliente_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Cliente:new" }
+
+cliente_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Cliente:exportar" }
+    
+cliente_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Cliente:create" }
+    requirements: { _method: post }
+
+cliente_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Cliente:edit" }
+
+cliente_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Cliente:update" }
+    requirements: { _method: post|put }
+
+cliente_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Cliente:delete" }
+    requirements: { _method: post|delete }
+cliente:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Cliente:index" , search: ''}

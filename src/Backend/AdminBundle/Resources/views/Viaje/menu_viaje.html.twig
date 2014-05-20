@@ -1,0 +1,11 @@
+<div id="tab" class="btn-group" >
+{% if is_granted('ROLE_VIEWVIAJE') %}
+<a href="{{ path('viaje_pendientes') }}" class="btn {% if active == 1 %} active {% endif %}" >Pendientes</a>
+{% endif %}
+{% if is_granted('ROLE_VIEWVIAJE') %}
+<a href="{{ path('viaje') }}" class="btn {% if active == 2 %} active {% endif %}" >Viaje</a>
+{% endif %}
+{% if is_granted('ROLE_VIEWCAJA') %}
+<a href="{{ path('caja') }}" class="btn {% if active == 3 %} active {% endif %}" >Movimientos de Caja</a>
+{% endif %}
+</div>

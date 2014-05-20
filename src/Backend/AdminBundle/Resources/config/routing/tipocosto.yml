@@ -1,0 +1,27 @@
+
+tipocosto_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:TipoCosto:new" }
+
+tipocosto_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:TipoCosto:create" }
+    requirements: { _method: post }
+
+tipocosto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:TipoCosto:edit" }
+
+tipocosto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:TipoCosto:update" }
+    requirements: { _method: post|put }
+
+tipocosto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:TipoCosto:delete" }
+    requirements: { _method: post|delete }
+
+tipocosto:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:TipoCosto:index",  search: '' }
