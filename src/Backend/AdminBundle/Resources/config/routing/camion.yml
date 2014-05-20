@@ -1,0 +1,32 @@
+camion_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Camion:new" }
+
+camion_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Camion:exportar" }
+
+
+camion_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Camion:create" }
+    requirements: { _method: post }
+
+camion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Camion:edit" }
+
+camion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Camion:update" }
+    requirements: { _method: post|put }
+
+camion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Camion:delete" }
+    requirements: { _method: post|delete }
+
+
+camion:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Camion:index" , search: ''}

@@ -1,0 +1,32 @@
+
+movimiento_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Movimiento:new" }
+
+movimiento_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Movimiento:create" }
+    requirements: { _method: post }
+
+#movimiento_edit:
+#    pattern:  /{id}/edit
+#    defaults: { _controller: "BackendAdminBundle:Movimiento:edit" }
+
+#movimiento_update:
+#    pattern:  /{id}/update
+#    defaults: { _controller: "BackendAdminBundle:Movimiento:update" }
+#    requirements: { _method: post|put }
+
+movimiento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Movimiento:delete" }
+    requirements: { _method: post|delete }
+
+movimiento_print:
+    pattern:  /{id}/print
+    defaults: { _controller: "BackendAdminBundle:Movimiento:printRecibo" }
+   
+
+caja:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Movimiento:index",  search: '' }

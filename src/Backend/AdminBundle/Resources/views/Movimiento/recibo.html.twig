@@ -1,0 +1,56 @@
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+   
+    #title{
+    margin-left: 400px;
+    border: 1px solid;
+    text-align: center;
+    width: 300px;
+    
+    background-color: #000;
+   }
+   .back_black{
+    background-color: #000;
+    color: #fff;
+    padding: 4px;
+   }
+    .bottom_title{
+    background-color: #fff;
+     padding: 4px;
+   }
+   
+   #firma{
+    margin-left: 300px;
+    margin-top: 50px;
+   }
+   #tipo, #motivo{
+    margin-top: 30px;
+   }
+  </style>
+</head>
+<body>
+
+
+<div id="title">
+<div class="back_black">RECIBO Nº {{ entity.getRecibo }}</div> 
+<div class="bottom_title">Deposito {{ entity.getDeposito }}</div> 
+</div>
+
+
+  
+ <div id="tipo"> 
+   {% if entity.getTipo == 'i' %}RECIBO  DE _______________________________ LA SUMA DE $  {{ entity.getMonto }} 
+   {% else %} ENTREGO A ________________________________ LA SUMA DE ${{ entity.getMonto }} {% endif %} 
+   
+  <div>
+ 
+ <div id="motivo">POR MOTIVO {{ entity.getMotivo | upper }} </div>
+ 
+ <div id="firma">Firma  ___________________________________ <br><br>   <div id="fecha"> Fecha de impresión: {{ "now"|date("d/m/Y") }}</div>
+ 
+ </div>
+
+</body>
+</html>

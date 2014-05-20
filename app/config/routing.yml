@@ -1,0 +1,55 @@
+backend_admin:
+    resource: "@BackendAdminBundle/Resources/config/routing.yml"
+    prefix:   /panel
+
+backend_user:
+    resource: "@BackendUserBundle/Resources/config/routing.yml"
+    prefix:   /panel/user
+
+backend_group:
+    resource: "@BackendUserBundle/Resources/config/group.yml"
+    prefix:   /panel/group
+    
+backend_seteo:
+    resource: "@BackendUserBundle/Resources/config/seteo.yml"
+    prefix:   /panel/seteo
+
+home:
+    pattern: /panel
+    defaults: { _controller: BackendAdminBundle:Default:index }
+
+login:
+    pattern: /panel/login
+    defaults: { _controller: BackendUserBundle:Default:login }
+
+login_check:
+    pattern: /panel/login_check
+
+logout:
+    path: /panel/logout
+    
+register_user:
+    pattern:  /register_user
+    defaults: { _controller: "BackendUserBundle:User:register" }
+    requirements: { _method: post }    
+
+activate_account:
+    pattern:  /activar/{codigo}
+    defaults: { _controller: "BackendUserBundle:User:activateAccount", codigo: '' }
+
+
+forgot_pass:
+    pattern:  /forgot_pass
+    defaults: { _controller: "BackendUserBundle:User:forgotPassword" }
+
+change_pass:
+    pattern:  /change_pass/{codigo}
+    defaults: { _controller: "BackendUserBundle:User:changePassword", codigo: '' }    
+    
+access_denied:
+    pattern: /panel/acess
+    defaults: { _controller: BackendAdminBundle:Default:access }    
+
+principal:
+   pattern: /
+   defaults: { _controller: BackendUserBundle:Default:login  }

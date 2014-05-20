@@ -1,0 +1,7 @@
+parameters:
+#    itwb_user.example.class: ITWB\UserBundle\Example
+
+services:
+#    itwb_user.example:
+#        class: %itwb_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

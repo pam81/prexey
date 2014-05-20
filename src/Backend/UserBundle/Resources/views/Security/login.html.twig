@@ -1,0 +1,135 @@
+{% extends '::base.html.twig' %}
+{% block container %}
+     <div class="" id="loginModal">
+    
+    <div class="modal-body">
+    <div class="well">
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#login" data-toggle="tab">Ingresar</a></li>
+    <li><a href="#create" data-toggle="tab">Registrarse</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+    <div class="tab-pane active in" id="login">
+    <form class="form-horizontal" action="{{ path('login_check') }}" method="POST" id="formLogin" name="formLogin">
+    <fieldset>
+    <div id="legend">
+    <legend class="">Login</legend>
+    </div>
+     
+    <div class="control-group">
+    <!-- Username -->
+    <label class="control-label" for="username">Usuario</label>
+    <div class="controls">
+    <input type="text" id="formUsername" name="_username" placeholder="" class="input-xlarge" value="{{ last_username }}"/>
+    <div id='formLogin__username_errorloc' class="help-inline error" ></div>
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Password-->
+    <label class="control-label" for="password">Contraseña</label>
+    <div class="controls">
+    <input type="password" id="formPassword" name="_password" placeholder="" class="input-xlarge">
+    <div id='formLogin__password_errorloc' class="help-inline error" ></div>
+    <input type="hidden" name="_target_path" value="home" />
+    <label class="checkbox">
+            <input type="checkbox" id="remember_me" name="_remember_me"> Recordarme
+             |
+            <a href="{{ path('forgot_pass') }}" class="btn btn-link">Recuperar contraseña </a>
+        </label>
+    </div>
+    </div>
+    <div class="control-group">
+    <!-- Button -->
+    <div class="controls">
+    <button class="btn btn-success" type="submit" id="btn_login" >Login</button>
+    </div>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="create">
+    <form id="formRegister" name="formRegister" class="form-horizontal" method="post" action="#">
+     
+    <div class="control-group">
+      <label class="control-label required" for="inputNombre">Nombre</label>
+      <div class="controls">
+      <input type="text" id="inputNombre" placeholder="" name="name" value="" />
+      
+      <div id='formRegister_name_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label class="control-label required" for="inputApellido">Apellido</label>
+      <div class="controls">
+      <input type="text" id="inputApellido" placeholder="" name="lastname" value="" />
+      <div id='formRegister_lastname_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label class="control-label required" for="inputEmail">Email</label>
+      <div class="controls">
+      <input type="text" id="inputEmail" placeholder="" name="email" value="" />
+      <div id='formRegister_email_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+    
+   
+   <div class="control-group">
+      <label class="control-label required" for="inputUsuario">Usuario</label>
+      <div class="controls">
+      <input type="text" id="inputUsuario" name="username" value="" placeholder="" />
+      <div id='formRegister_username_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label class="control-label required" for="inputPass">Contraseña</label>
+      <div class="controls">
+      <input type="password" id="inputPass" name="password" placeholder="" value="" />
+      <div id='formRegister_password_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+   
+    <div class="control-group">
+      <label class="control-label required" for="inputConfirmPass">Repetir Contraseña</label>
+      <div class="controls">
+      <input type="password" id="inputConfirmPass" name="confirmPassword" placeholder="" value="" />
+      <div id='formRegister_confirmPassword_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label class="control-label required" for="inputEmpleado">Nro. Empleado</label>
+      <div class="controls">
+      <input type="text" id="inputEmpleado" name="empleado" value="" placeholder="" />
+      <div id='formRegister_empleado_errorloc' class="help-inline error" ></div>
+      </div>
+    </div>
+    
+      <div class="controls">
+    <button type="button" id="btn_create_account" class="btn btn-primary" data-url="{{ path('register_user') }}" >Crear</button>
+    </div>
+    
+    </form>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+     <div class="modal small hide " style="width: 80px; text-align: center;" id="myModalLoading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+     
+     <div class="modal-body">
+       <p class="error-text"> <img src="{{ asset("img/loading.gif") }}"  width="32" height="32" /></p>
+     </div>
+    
+    </div>
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+ {% javascripts '@BackendUserBundle/Resources/public/js/login_user.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% endblock %}

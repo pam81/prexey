@@ -1,0 +1,17 @@
+{% extends '::backend.html.twig' %}
+
+{% block container %}
+ 
+<h4> BIENVENIDO {{ app.user.username }} !!</h4>
+ 
+ {% if is_granted('ROLE_VISITOR') %}
+  
+ <p>
+  Usted no posee rol asignado contactese con el administrador.
+ </p>
+ {% endif %} 
+ 
+
+  
+
+{% endblock %}

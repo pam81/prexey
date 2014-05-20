@@ -1,0 +1,74 @@
+{% extends '::backend.html.twig' %}
+
+{% block container %}
+    
+    <div class="btn-toolbar">
+    
+    <button class="btn btn-primary" type="button" id="new_button" data-url="{{ path('seteo_new') }}" >Nuevo Parámetro</button>
+    
+    </div>
+    <div class="well">
+    <table class="table">
+    <thead>
+    <tr>
+    
+    <th {% if pagination.isSorted('u.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nombre', 'u.name') }}</th>
+    <th>Valor</th>
+    <th style="width: 36px;">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+     {% for seteo in pagination %}
+   
+    
+     <tr>
+                
+                <td>{{ seteo.name }}</td>
+                <td>{{ seteo.value }}</td>
+                
+                <td>
+                <a href="{{ path('seteo_edit', { 'id': seteo.id }) }}"><i class="icon-pencil"></i></a>
+                <a href="#myModal" role="button" class="confirm-delete" data-toggle="modal" data-id={{ seteo.id }} ><i class="icon-remove"></i></a>
+                </td>
+    </tr>
+    
+    {% endfor %}
+   
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="pagination">
+     {{ knp_pagination_render(pagination) }}
+    
+    </div>
+    
+    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Confirmar Borrado</h3>
+     </div>
+     <div class="modal-body">
+       <p class="error-text">Esta seguro que desea borrar el parámetro seleccionado?</p>
+     </div>
+     <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+      <button class="btn btn-danger " data-id="0"  data-url="{{ path('seteo_delete', { 'id': 'id' }) }}">Borrar</button>
+     </div>
+    </div>
+    
+    
+    <form action="" id="delete-form" method="post" {{ form_enctype(delete_form) }}>
+    {{ form_widget(delete_form) }}
+    <input type="hidden" value="DELETE" name="_method">
+    
+    </form>
+    
+    
+    {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+   
+  {% endblock %}
+
+

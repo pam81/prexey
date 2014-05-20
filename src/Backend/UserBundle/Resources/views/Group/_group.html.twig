@@ -1,0 +1,47 @@
+ <div class="control-group">
+
+{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_userbundle_group_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
+  
+</div>
+</div>
+    
+     
+    <div class="control-group">
+
+{{ form_label(form.role,"Rol", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.role, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+    <div id='backend_userbundle_group_role_errorloc' class="help-inline error" >{{ form_errors(form.role) }}</div>
+</div>
+</div>
+ 
+
+
+  
+   
+
+
+<div class="control-group">
+
+{{ form_label(form.accesos,"Accesos", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.accesos, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+ <div id='backend_userbundle_group_accesos_errorloc' class="help-inline error" >{{ form_errors(form.accesos) }}</div>   
+</div>
+</div>
+ 
+    
+    
+      
+      
+   
+     
+       
+    
+     
+     

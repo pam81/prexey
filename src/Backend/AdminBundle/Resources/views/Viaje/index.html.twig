@@ -1,0 +1,131 @@
+{% extends '::backend.html.twig' %}
+
+{% block container %}
+
+  {% set active=2 %}
+  {% include 'BackendAdminBundle:Viaje:menu_viaje.html.twig' %}
+  
+  
+   <div class="well">  
+      
+    
+        <h4>Listado de Viajes </h4>
+
+<div class="row-fluid">
+  
+  
+  <div class="span2">  {% if is_granted("ROLE_ADDVIAJE") %} <button class="btn btn-primary" type="button" id="new_button" data-url="{{ path('viaje_new') }}" >Nuevo Viaje</button> {% endif %} </div>
+  
+    <div class="span6">
+     
+    <form id="custom-search-form" method="get" class="form-search form-inline " action="{{ path('viaje') }}">
+
+      <div class="input-append">
+      <input type="text" class="search-query" name="query" id="search-query" placeholder="Buscar" value="{{ search.query }}">
+      <button type="submit" id="search-button-viaje" class="btn" data-url="{{ path('viaje') }}" ><i class="icon-search"></i></button>
+      </div>
+      <label class="checkbox">      
+        <input type="checkbox" id="anulado" name="anulado" {% if search.anulado == 1 %} checked="checked" {% endif %} value="1"> ver anulados
+        
+      </label>
+      <label class="checkbox"> <input type="checkbox" id="excepcion" name="excepcion" {% if search.excepcion == 1 %} checked="checked" {% endif %} value="1"> solo con excepción</label>
+      </form>
+       
+    
+    </div>
+    
+    
+    <div class="span2">
+          {% if is_granted("ROLE_VIEWVIAJE") %} <button class="btn btn-primary" type="button" id="exportar_button" data-url="{{ path('viaje_exportar') }}" >Exportar </button> {% endif %}
+    </div>
+  
+    
+ </div>
+    
+    
+    <div class="well">
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Nº</th>
+    <th {% if pagination.isSorted('u.fecha_salida') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Fecha Salida', 'u.fecha_salida') }}</th>
+    <th {% if pagination.isSorted('c.patente') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Camión', 'c.patente') }}</th>
+    <th {% if pagination.isSorted('h.lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Chofer', 'h.lastname') }}</th>
+    <th {% if pagination.isSorted('d.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Depósito', 'd.name') }}</th>
+    <th {% if pagination.isSorted('e.texto') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Estado', 'e.texto') }}</th>
+    <th {% if pagination.isSorted('u.hasException') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Excepción', 'u.hasException') }}</th>
+    <th>Rendición</th>
+    <th style="width: 36px;">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+     {% for viaje in pagination %}
+   
+    
+     <tr>
+                <td>{{ viaje.getId }}</td>
+                <td>{{ viaje.getFechaSalida |date('d-m-Y') }}  </td>
+                <td>{{ viaje.camion }}</td>
+                <td>{{ viaje.chofer }}</td>
+                <td>{{ viaje.deposito }}</td>
+                <td>
+                <span
+                {% if viaje.getEstado.getCode == "BORRADOR" %}
+                 class="label label-default" 
+                {% elseif viaje.getEstado.getCode == "PENDIENTE" %}
+                 class="label label-info"                   
+                {% elseif viaje.getEstado.getCode == "RENDIDO" %}
+                 class="label label-success"
+                {% elseif viaje.getEstado.getCode == "ANULADO" %}
+                 class="label label-important"   
+                {% endif %}
+                >
+                {{ viaje.getEstado }}</span></td>
+                <td> {% if viaje.getHasException %} <span class="label label-info">Excepción</span> {% endif %}</td>
+                <td>
+                {% if viaje.getEstado.getCode == "PENDIENTE" %}
+                {% set fecha = [viaje.getFechaRegreso|date('d-m-Y'),viaje.getHoraRegreso|date('H:i')]|join(',') %}
+               
+                {% if date( fecha  ) < date()  %}
+                <span class="label label-warning">Demorada</span>
+                {% endif %}
+                {% endif %}
+                </td>
+                <td>
+                 {% if is_granted("ROLE_MODVIAJE") %}
+                <a href="{{ path('viaje_edit', { 'id': viaje.id }) }}"><i class="icon-pencil"></i></a>
+                 {% endif %}
+                {% if viaje.getEstado.getCode == "RENDIDO" %}
+                <a href="{{ path('viaje_rendir', { 'id': viaje.id }) }}"><i class="icon-road"></i></a>
+                <a href="{{ path('rendicion_print',{ 'id': viaje.id }) }}"><i class="icon-print"></i></a>
+                
+                {% endif %}
+                </td>
+    </tr>
+    
+    {% endfor %}
+   
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="pagination">
+     {{ knp_pagination_render(pagination) }}
+    
+    </div>
+    
+    
+    
+   </div> 
+    {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+ 
+{% javascripts '@BackendAdminBundle/Resources/public/js/search_viaje.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts '@BackendAdminBundle/Resources/public/js/exportar_entidad.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}   
+  
+{% endblock %}

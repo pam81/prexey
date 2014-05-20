@@ -1,0 +1,129 @@
+{% extends "::backend.html.twig"%}
+{% block container %}
+  
+      <div class="well">
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">Perfil</a></li>
+    <li><a href="#profile" data-toggle="tab">Contraseña</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+    <div class="tab-pane active in" id="home">
+    <form class="form-horizontal" id="tab" name="tab" method="post" novalidate  {{ form_enctype(form) }} action="" >
+    {{ form_errors(form) }}
+        
+    <input type="hidden" name="action" value="update" />
+    
+    <div class="control-group">
+
+{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_userbundle_usertype_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
+  
+</div>
+</div>
+    
+    
+   <div class="control-group">
+
+{{ form_label(form.lastname,"Apellido", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.lastname, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+    <div id='backend_userbundle_usertype_lastname_errorloc' class="help-inline error" >{{ form_errors(form.lastname) }}</div>
+</div>
+</div>
+ 
+    
+      <div class="control-group">
+
+{{ form_label(form.email,"Email", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.email, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+ <div id='backend_userbundle_usertype_email_errorloc' class="help-inline error" >{{ form_errors(form.email) }}</div>   
+</div>
+</div>
+    
+    
+        
+    <div class="control-group">
+
+{{ form_label(form.username,"Username", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.username, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_username_errorloc' class="help-inline error" >{{ form_errors(form.username) }}</div>  
+</div>
+</div>
+    
+    
+    
+    
+    
+    {{ form_rest(form) }}
+    
+    
+        <div class="control-group">
+<!-- Button -->
+<div class="controls">
+<button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i>Actualizar</button>
+</div>
+</div>
+    
+    </form>
+    </div>
+    <div class="tab-pane fade" id="profile">
+    <form id="tab2" class="form-horizontal" name="tab2" method="post" novalidate  {{ form_enctype(form) }} action="" >
+    {{ form_errors(pass) }}
+     
+    <input type="hidden" name="action" value="change" />
+    
+    <div class="control-group">
+
+{{ form_label(pass.password.first,"Nueva Contraseña", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(pass.password.first, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+    <div id='backend_userbundle_usertype_password_firt_errorloc' class="help-inline error" >{{ form_errors(pass.password.first) }}</div>
+</div>
+</div>
+      
+   
+     <div class="control-group">
+
+{{ form_label(pass.password.second,"Repetir Contraseña", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(pass.password.second, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_userbundle_usertype_password_second_errorloc' class="help-inline error" >{{ form_errors(pass.password.second) }}</div>   
+</div>
+</div>
+    
+    
+    
+    {{ form_rest(pass) }}
+    
+    <div class="control-group">
+<!-- Button -->
+<div class="controls">
+<button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i>Cambiar</button>
+</div>
+</div>
+    
+    
+    </form>
+    </div>
+    </div>
+   
+  
+    
+   
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+ 
+{% javascripts '@BackendUserBundle/Resources/public/js/validate_profile.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}

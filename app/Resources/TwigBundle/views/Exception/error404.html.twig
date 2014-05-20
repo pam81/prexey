@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <style>
+   .centered{
+     margin: 0 auto;
+     text-align: center;
+   }
+  </style>
+ {% endblock %}
+{% block container %}
+ <div class="centered">
+ <h3> 404: La página que buscas no se ha encontrado.</h3>
+ <img src="{{ asset('img/negative.png') }}" width="250" height="250" alt="not found" />
+ </div>
+{% endblock %}

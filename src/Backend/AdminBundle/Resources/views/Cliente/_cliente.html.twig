@@ -1,0 +1,70 @@
+<div class="control-group">
+
+{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.cuit,"CUIT", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.cuit, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_cuit_errorloc' class="help-inline error" >{{ form_errors(form.cuit) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.direccion,"Dirección", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.direccion, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_direccion_errorloc' class="help-inline error" >{{ form_errors(form.direccion) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.observacion,"Observaciones", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.observacion, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_observacion_errorloc' class="help-inline error" >{{ form_errors(form.observacion) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.email,"Email", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.email, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_email_errorloc' class="help-inline error" >{{ form_errors(form.email) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.celular,"Teléfono", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.celular, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_celular_errorloc' class="help-inline error" >{{ form_errors(form.celular) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.isDirecto,"Cliente Directo", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.isDirecto, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_isDirecto_errorloc' class="help-inline error" >{{ form_errors(form.isDirecto) }}</div>
+  
+</div>
+</div>
+
