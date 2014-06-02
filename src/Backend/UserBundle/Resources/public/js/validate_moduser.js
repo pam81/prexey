@@ -1,22 +1,5 @@
 $(document).ready(function() {
-  var show_deposito=0;
-
-    $("#backend_userbundle_usertype_groups").change(function(){
-    
-    $("#list_depositos").hide();
-    show_deposito=0;
-      $('#backend_userbundle_usertype_groups option:selected').each(function(){
-    
-        if ( $(this).text() == 'Operario' )
-        {  $("#list_depositos").show();
-           show_deposito=1;
-        } 
-    
-    });
-      if (show_deposito == 0)
-        $("#backend_userbundle_usertype_deposito").val([]);
-    });
-
+ 
  $("#backend_userbundle_usertype_groups").change();
 		var validator = $("#tab").validate({
 		
@@ -55,15 +38,8 @@ $(document).ready(function() {
 					required:true,
 					
 				},
-				"backend_userbundle_usertype[deposito]": {
-					required:true,
-					
-				},
-				"backend_userbundle_usertype[nroEmpleado]":{
-        	required:true,
-        	minlength:2,
-					maxlength:100,
-        }
+			
+				
 			},
 			
 			 messages: {
@@ -101,15 +77,7 @@ $(document).ready(function() {
             required: "Seleccione un grupo para el usuario",
             
             },
-            "backend_userbundle_usertype[deposito]": {
-            required: "Seleccione un depósito para el usuario",
-            
-            },
-             "backend_userbundle_usertype[nroEmpleado]": {
-            required: "Ingrese el número de empleado",
-            maxlength:  jQuery.validator.format("Máximo {0} carácteres!"),
-            minlength: jQuery.validator.format("Mínimo {0} carácteres!")
-            }
+           
             
       },
       

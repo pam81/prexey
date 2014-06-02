@@ -47,18 +47,7 @@ class UserService
         return json_encode($retorna);
     }
     
-    public function validateNroEmpleado($nroEmpleado)
-    {
-      $user = $this->em->getRepository("BackendUserBundle:User")
-                ->findOneBy(array("nroEmpleado"=>$nroEmpleado, "isDelete"=>false));
-     $chofer = $this->em->getRepository("BackendAdminBundle:Chofer")
-                ->findOneBy(array("nroEmpleado"=>$nroEmpleado, "isDelete"=>false));
-      if ($user != null or $chofer != null)
-        return false;
-      else
-        return true;             
     
-    }
     
     public function validateUsuario($username)
     {
@@ -100,12 +89,7 @@ class UserService
           return $resultado;
        }
     
-       if ( !$this->validateNroEmpleado($usuario["empleado"]) )
-       {
-          $resultado["retorna"]=false;
-          $resultado["message"]="Ya esta en uso el Nro de Empleado";
-          return $resultado;
-       }
+      
          return $resultado;
     }
     
@@ -134,7 +118,7 @@ class UserService
            $user->setPassword($usuario["password"]);
            $user->setName($usuario["name"]);
            $user->setLastname($usuario["lastname"]);
-           $user->setNroEmpleado($usuario["empleado"]);
+          
            $user->setIsActive(false);
            $codigo=md5($usuario["email"].rand().date("now"));
            $user->setCodigo($codigo);
@@ -280,12 +264,6 @@ class UserService
      return json_encode($retorna);
     
     }
-    
-    
-   
-    
-    
-    
-    
+
     
 }

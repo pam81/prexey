@@ -33,11 +33,12 @@ var frmregister  = new Validator("formRegister");
   frmregister.addValidation("inputConfirmPass","eqelmnt=inputPass",
  "La confirmación del password no coincide"); 
  
-  frmregister.addValidation("inputEmpleado","req","Ingrese su número de empleado");
-  frmregister.addValidation("inputEmpleado","maxlen=100",
-        "Máximo de 100 carácteres para el número de empleado ");
+ 
  
  $(document).ready(function(){
+ 
+ 
+
  
  $("#btn_create_account").on("click",function(){
  

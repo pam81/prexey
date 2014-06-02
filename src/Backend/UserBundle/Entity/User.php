@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\Collections\ArrayCollection;
 use Backend\UserBundle\Validator\Constraints\UsuarioUnique;
 use Backend\UserBundle\Validator\Constraints\EmailUnique;
-use Backend\UserBundle\Validator\Constraints\EmpleadoUnique;
+
 
 /**
  * Backend\UserBundle\Entity\User
@@ -18,7 +18,6 @@ use Backend\UserBundle\Validator\Constraints\EmpleadoUnique;
  * @ORM\HasLifecycleCallbacks 
  * @UsuarioUnique()
  * @EmailUnique()  
- * @EmpleadoUnique()   
  */
 class User implements AdvancedUserInterface, \Serializable {
 
@@ -73,86 +72,46 @@ class User implements AdvancedUserInterface, \Serializable {
      */
     private $lastname;
     
-   /**
-     * @ORM\Column(name="nroempleado", type="integer", nullable=true)
-     */
-    private $nroEmpleado;
+   
     /**
      * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
      *
      */
     private $groups;
     
-    
-   /**
-     * @ORM\ManyToOne(targetEntity="\Backend\AdminBundle\Entity\Deposito", inversedBy="operarios")
-     * @ORM\JoinColumn(name="deposito_id", referencedColumnName="id")
-     */
-    private $deposito;
-    
-  /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Movimiento", mappedBy="usuario")
-     */
-    private $movimientos; 
-    
     /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Movimiento", mappedBy="delete_by")
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    private $delmovimientos; 
-    
-       /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Costo", mappedBy="delete_by")
+    private $createdAt;
+    /**
+     * @ORM\Column(name="modified_at", type="datetime", nullable=true)
      */
-     
-     private $delcostos;
-     
-        /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Viaje", mappedBy="delete_by")
-     */
-     
-     private $delviajes;
-     
-     /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Viaje", mappedBy="operario")
-     */
-     
-     private $viajes;
-     
-     /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Caja", mappedBy="usuario")
-     */
-     private $cajaempleados;
-     
-     /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Caja", mappedBy="delete_by")
-     */
-     private $delcajaempleados;
-     
-       /**
-     * @ORM\OneToMany(targetEntity="\Backend\AdminBundle\Entity\Viaje", mappedBy="created_by")
-     */
-     private $create_viajes;
+    private $modifiedAt;
+  
        
     public function __construct() {
         $this->isActive = true;
         $this->isDelete = false;
         $this->salt = md5(uniqid(null, true));
-       
-        $this->movimientos = new ArrayCollection();
-        $this->delmovimientos = new ArrayCollection();
-        $this->cajaempleados = new ArrayCollection();
-        $this->delcajaempleados = new ArrayCollection();
-        $this->delcostos = new ArrayCollection();
         $this->groups =  new ArrayCollection();
-        $this->viajes =  new ArrayCollection();
-        $this->create_viajes =  new ArrayCollection();
-        $this->delviajes =  new ArrayCollection();
+        $this->createdAt = new \DateTime('now');
     }
 
    public function __toString(){
    
          return $this->username;
    }
+
+
+   /**
+     * @ORM\PreUpdate()
+     * 
+     */
+     
+    public function modifiedUpdate(){
+    
+      $this->setModifiedAt(new \DateTime('now'));
+    } 
 
     /**
      * @inheritDoc
@@ -374,7 +333,7 @@ class User implements AdvancedUserInterface, \Serializable {
     /**
      * Remove groups
      *
-     * @param \ITWB\UserBundle\Entity\Group $groups
+     * @param \Backend\UserBundle\Entity\Group $groups
      */
     public function removeGroup(\Backend\UserBundle\Entity\Group $groups)
     {
@@ -437,10 +396,6 @@ class User implements AdvancedUserInterface, \Serializable {
         return $this->lastname;
     }
 
-  
-
-   
-
     /**
      * Set codigo
      *
@@ -487,319 +442,51 @@ class User implements AdvancedUserInterface, \Serializable {
         return $this->isDelete;
     }
 
+    
+
     /**
-     * Set nroEmpleado
+     * Set createdAt
      *
-     * @param string $nroEmpleado
+     * @param \DateTime $createdAt
      * @return User
      */
-    public function setNroEmpleado($nroEmpleado)
+    public function setCreatedAt($createdAt)
     {
-        $this->nroEmpleado = $nroEmpleado;
+        $this->createdAt = $createdAt;
     
         return $this;
     }
 
     /**
-     * Get nroEmpleado
+     * Get createdAt
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getNroEmpleado()
+    public function getCreatedAt()
     {
-        return $this->nroEmpleado;
+        return $this->createdAt;
     }
 
-   
-
     /**
-     * Add movimientos
+     * Set modifiedAt
      *
-     * @param \Backend\AdminBundle\Entity\Movimiento $movimientos
+     * @param \DateTime $modifiedAt
      * @return User
      */
-    public function addMovimiento(\Backend\AdminBundle\Entity\Movimiento $movimientos)
+    public function setModifiedAt($modifiedAt)
     {
-        $this->movimientos[] = $movimientos;
+        $this->modifiedAt = $modifiedAt;
     
         return $this;
     }
 
     /**
-     * Remove movimientos
+     * Get modifiedAt
      *
-     * @param \Backend\AdminBundle\Entity\Movimiento $movimientos
+     * @return \DateTime 
      */
-    public function removeMovimiento(\Backend\AdminBundle\Entity\Movimiento $movimientos)
+    public function getModifiedAt()
     {
-        $this->movimientos->removeElement($movimientos);
-    }
-
-    /**
-     * Get movimientos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMovimientos()
-    {
-        return $this->movimientos;
-    }
-
-    /**
-     * Add delmovimientos
-     *
-     * @param \Backend\AdminBundle\Entity\Movimiento $delmovimientos
-     * @return User
-     */
-    public function addDelmovimiento(\Backend\AdminBundle\Entity\Movimiento $delmovimientos)
-    {
-        $this->delmovimientos[] = $delmovimientos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove delmovimientos
-     *
-     * @param \Backend\AdminBundle\Entity\Movimiento $delmovimientos
-     */
-    public function removeDelmovimiento(\Backend\AdminBundle\Entity\Movimiento $delmovimientos)
-    {
-        $this->delmovimientos->removeElement($delmovimientos);
-    }
-
-    /**
-     * Get delmovimientos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDelmovimientos()
-    {
-        return $this->delmovimientos;
-    }
-
-    /**
-     * Add delcostos
-     *
-     * @param \Backend\AdminBundle\Entity\Costos $delcostos
-     * @return User
-     */
-    public function addDelcosto(\Backend\AdminBundle\Entity\Costo $delcostos)
-    {
-        $this->delcostos[] = $delcostos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove delcostos
-     *
-     * @param \Backend\AdminBundle\Entity\Costos $delcostos
-     */
-    public function removeDelcosto(\Backend\AdminBundle\Entity\Costo $delcostos)
-    {
-        $this->delcostos->removeElement($delcostos);
-    }
-
-    /**
-     * Get delcostos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDelcostos()
-    {
-        return $this->delcostos;
-    }
-
-    /**
-     * Add delviajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $delviajes
-     * @return User
-     */
-    public function addDelviaje(\Backend\AdminBundle\Entity\Viaje $delviajes)
-    {
-        $this->delviajes[] = $delviajes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove delviajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $delviajes
-     */
-    public function removeDelviaje(\Backend\AdminBundle\Entity\Viaje $delviajes)
-    {
-        $this->delviajes->removeElement($delviajes);
-    }
-
-    /**
-     * Get delviajes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDelviajes()
-    {
-        return $this->delviajes;
-    }
-
-    /**
-     * Add viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $viajes
-     * @return User
-     */
-    public function addViaje(\Backend\AdminBundle\Entity\Viaje $viajes)
-    {
-        $this->viajes[] = $viajes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $viajes
-     */
-    public function removeViaje(\Backend\AdminBundle\Entity\Viaje $viajes)
-    {
-        $this->viajes->removeElement($viajes);
-    }
-
-    /**
-     * Get viajes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getViajes()
-    {
-        return $this->viajes;
-    }
-
-    /**
-     * Add create_viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $createViajes
-     * @return User
-     */
-    public function addCreateViaje(\Backend\AdminBundle\Entity\Viaje $createViajes)
-    {
-        $this->create_viajes[] = $createViajes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove create_viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $createViajes
-     */
-    public function removeCreateViaje(\Backend\AdminBundle\Entity\Viaje $createViajes)
-    {
-        $this->create_viajes->removeElement($createViajes);
-    }
-
-    /**
-     * Get create_viajes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCreateViajes()
-    {
-        return $this->create_viajes;
-    }
-
-   
-
-    /**
-     * Set deposito
-     *
-     * @param \Backend\AdminBundle\Entity\Deposito $deposito
-     * @return User
-     */
-    public function setDeposito(\Backend\AdminBundle\Entity\Deposito $deposito = null)
-    {
-        $this->deposito = $deposito;
-    
-        return $this;
-    }
-
-    /**
-     * Get deposito
-     *
-     * @return \Backend\AdminBundle\Entity\Deposito 
-     */
-    public function getDeposito()
-    {
-        return $this->deposito;
-    }
-
-   
-
-    /**
-     * Add cajaempleados
-     *
-     * @param \Backend\AdminBundle\Entity\Caja $cajaempleados
-     * @return User
-     */
-    public function addCajaempleado(\Backend\AdminBundle\Entity\Caja $cajaempleados)
-    {
-        $this->cajaempleados[] = $cajaempleados;
-    
-        return $this;
-    }
-
-    /**
-     * Remove cajaempleados
-     *
-     * @param \Backend\AdminBundle\Entity\Caja $cajaempleados
-     */
-    public function removeCajaempleado(\Backend\AdminBundle\Entity\Caja $cajaempleados)
-    {
-        $this->cajaempleados->removeElement($cajaempleados);
-    }
-
-    /**
-     * Get cajaempleados
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCajaempleados()
-    {
-        return $this->cajaempleados;
-    }
-
-    /**
-     * Add delcajaempleados
-     *
-     * @param \Backend\AdminBundle\Entity\Caja $delcajaempleados
-     * @return User
-     */
-    public function addDelcajaempleado(\Backend\AdminBundle\Entity\Caja $delcajaempleados)
-    {
-        $this->delcajaempleados[] = $delcajaempleados;
-    
-        return $this;
-    }
-
-    /**
-     * Remove delcajaempleados
-     *
-     * @param \Backend\AdminBundle\Entity\Caja $delcajaempleados
-     */
-    public function removeDelcajaempleado(\Backend\AdminBundle\Entity\Caja $delcajaempleados)
-    {
-        $this->delcajaempleados->removeElement($delcajaempleados);
-    }
-
-    /**
-     * Get delcajaempleados
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDelcajaempleados()
-    {
-        return $this->delcajaempleados;
+        return $this->modifiedAt;
     }
 }

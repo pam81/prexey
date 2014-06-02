@@ -23,12 +23,22 @@ class Cliente
     public $name;
 
     /**
-     * @ORM\Column(name="cuit", type="string", length=100)
+     * @ORM\Column(name="cuit", type="string", length=100, nullable=true)
      */
     public $cuit;
+    
+    /**
+     * @ORM\Column(name="dni", type="string", length=100, nullable=true)
+     */
+    public $dni;
+    
+    /**
+     * @ORM\Column(name="codigo", type="string", length=100)
+     */
+    public $codigo;
 
     /**
-     * @ORM\Column(name="direccion", type="text")
+     * @ORM\Column(name="direccion", type="text", nullable=true)
      */
     private $direccion;
     /**
@@ -44,50 +54,36 @@ class Cliente
      * @ORM\Column(name="celular", type="string", length=100, nullable=true)
      */
     private $celular;
-    /**
-     * @ORM\Column(name="is_directo", type="boolean" )
-     */
-    private $isDirecto; //indico si es directo o indirecto solo dos posibilidades
+    
     /**
      * @ORM\Column(name="is_delete", type="boolean" )
      */
     private $isDelete;
     
-    /**
-     * @ORM\Column(name="is_special", type="boolean" )
-     */
-    private $isSpecial;
     
      /**
-     * @ORM\OneToMany(targetEntity="Deposito", mappedBy="cliente")
+     * @ORM\Column(name="is_active", type="boolean" )
      */
-    private $depositos;
-
-  /**
-     * @ORM\OneToMany(targetEntity="Hoja", mappedBy="cliente")
-     */
-     
-     private $hojas;
-
-
-/**
-     * @ORM\OneToMany(targetEntity="Viaje", mappedBy="cliente")
-     */
-     private $viajes;
+    private $isActive;
     
-     
+    /**
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+    /**
+     * @ORM\Column(name="modified_at", type="datetime", nullable=true)
+     */
+    private $modifiedAt; 
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->depositos = new ArrayCollection();
+        
         $this->isDelete=false;
-        $this->isDirecto=true;
-        $this->isSpecial=false;
-        $this->hojas = new ArrayCollection();
-        $this->viajes = new ArrayCollection();
+        $this->isActive=true;
+        $this->createdAt = new \DateTime('now');
        
     }
     
@@ -221,29 +217,7 @@ class Cliente
         return $this->celular;
     }
 
-    /**
-     * Set isDirecto
-     *
-     * @param boolean $isDirecto
-     * @return Cliente
-     */
-    public function setIsDirecto($isDirecto)
-    {
-        $this->isDirecto = $isDirecto;
     
-        return $this;
-    }
-
-    /**
-     * Get isDirecto
-     *
-     * @return boolean 
-     */
-    public function getIsDirecto()
-    {
-        return $this->isDirecto;
-    }
-
     /**
      * Set isDelete
      *
@@ -267,127 +241,7 @@ class Cliente
         return $this->isDelete;
     }
 
-    /**
-     * Add depositos
-     *
-     * @param \Backend\AdminBundle\Entity\Deposito $depositos
-     * @return Cliente
-     */
-    public function addDeposito(\Backend\AdminBundle\Entity\Deposito $depositos)
-    {
-        $this->depositos[] = $depositos;
     
-        return $this;
-    }
-
-    /**
-     * Remove depositos
-     *
-     * @param \Backend\AdminBundle\Entity\Deposito $depositos
-     */
-    public function removeDeposito(\Backend\AdminBundle\Entity\Deposito $depositos)
-    {
-        $this->depositos->removeElement($depositos);
-    }
-
-    /**
-     * Get depositos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDepositos()
-    {
-        return $this->depositos;
-    }
-
-    /**
-     * Add hojas
-     *
-     * @param \Backend\AdminBundle\Entity\Hoja $hojas
-     * @return Cliente
-     */
-    public function addHoja(\Backend\AdminBundle\Entity\Hoja $hojas)
-    {
-        $this->hojas[] = $hojas;
-    
-        return $this;
-    }
-
-    /**
-     * Remove hojas
-     *
-     * @param \Backend\AdminBundle\Entity\Hoja $hojas
-     */
-    public function removeHoja(\Backend\AdminBundle\Entity\Hoja $hojas)
-    {
-        $this->hojas->removeElement($hojas);
-    }
-
-    /**
-     * Get hojas
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHojas()
-    {
-        return $this->hojas;
-    }
-
-    /**
-     * Add viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $viajes
-     * @return Cliente
-     */
-    public function addViaje(\Backend\AdminBundle\Entity\Viaje $viajes)
-    {
-        $this->viajes[] = $viajes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $viajes
-     */
-    public function removeViaje(\Backend\AdminBundle\Entity\Viaje $viajes)
-    {
-        $this->viajes->removeElement($viajes);
-    }
-
-    /**
-     * Get viajes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getViajes()
-    {
-        return $this->viajes;
-    }
-
-    /**
-     * Set isSpecial
-     *
-     * @param boolean $isSpecial
-     * @return Cliente
-     */
-    public function setIsSpecial($isSpecial)
-    {
-        $this->isSpecial = $isSpecial;
-    
-        return $this;
-    }
-
-    /**
-     * Get isSpecial
-     *
-     * @return boolean 
-     */
-    public function getIsSpecial()
-    {
-        return $this->isSpecial;
-    }
 
     /**
      * Set cuit
@@ -412,6 +266,129 @@ class Cliente
         return $this->cuit;
     }
 
+    /**
+     * @ORM\PreUpdate()
+     * 
+     */
+     
+    public function modifiedUpdate(){
     
+      $this->setModifiedAt(new \DateTime('now'));
+    }  
     
+
+    /**
+     * Set dni
+     *
+     * @param string $dni
+     * @return Cliente
+     */
+    public function setDni($dni)
+    {
+        $this->dni = $dni;
+    
+        return $this;
+    }
+
+    /**
+     * Get dni
+     *
+     * @return string 
+     */
+    public function getDni()
+    {
+        return $this->dni;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     * @return Cliente
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+    
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string 
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return Cliente
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Cliente
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set modifiedAt
+     *
+     * @param \DateTime $modifiedAt
+     * @return Cliente
+     */
+    public function setModifiedAt($modifiedAt)
+    {
+        $this->modifiedAt = $modifiedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedAt
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedAt()
+    {
+        return $this->modifiedAt;
+    }
 }

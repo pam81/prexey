@@ -31,14 +31,6 @@ Backend\UserBundle\Entity\User:
                 maxMessage: "El email debe tener 60 carácteres máximo"  
         groups:
             - NotBlank: { message: Debe seleccionar al menos un Grupo }  
-        nroEmpleado:                                                
-            - NotBlank: { message: Ingrese el número de empleado }
-            - Length: 
-                min: 2
-                max: 100
-                minMessage: "El número de empleado debe tener al menos 2 carácteres"
-                maxMessage: "El número de empleado debe tener 100 carácteres máximo"
-
 Backend\UserBundle\Entity\Group:
     properties:   
         name:

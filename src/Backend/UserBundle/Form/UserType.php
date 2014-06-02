@@ -11,12 +11,10 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username', 'text');
+            $builder->add('username', 'text');
             $builder->add('name', 'text');
             $builder->add('lastname','text');
-            $builder->add('nroEmpleado','text');
             $builder->add('email','email');
-           
             $builder->add('password', 'repeated', array(
                         'type' => 'password',
                         'invalid_message' => 'No coincide la contraseña.',
@@ -30,21 +28,7 @@ class UserType extends AbstractType
                 'property'=>'name',
                 'multiple'=>true
             ));
-            //solo se pueden asignar operarios a depositos 
-            // no borrados y no especiales
-            $builder->add('deposito','entity',array(
-                'class'=>'BackendAdminBundle:Deposito',
-                'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')
-                        ->where('u.isDelete = :delete')
-                        ->andWhere('u.isSpecial = :special')
-                         ->setParameter('delete',false)
-                         ->setParameter('special',false)
-                         ->orderBy('u.name', 'ASC');
-            },
-                'property'=>'name',
-                'multiple'=>false //un solo deposito por operario
-            ));
+          
             $builder->add('is_active','checkbox',array(
              'value'=>1,
              'label'=>"Activo",

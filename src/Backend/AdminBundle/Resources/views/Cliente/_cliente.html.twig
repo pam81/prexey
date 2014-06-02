@@ -1,6 +1,6 @@
 <div class="control-group">
 
-{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+{{ form_label(form.name,"Nombre / Razón Social", { 'label_attr': {'class': 'control-label'} }) }}
 <div class="controls">
  {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
  <div id='backend_adminbundle_cliente_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
@@ -14,6 +14,16 @@
 <div class="controls">
  {{ form_widget(form.cuit, { 'attr': {'class': 'input-xlarge'} }) }}
  <div id='backend_adminbundle_cliente_cuit_errorloc' class="help-inline error" >{{ form_errors(form.cuit) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.dni,"DNI", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.dni, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_dni_errorloc' class="help-inline error" >{{ form_errors(form.dni) }}</div>
   
 </div>
 </div>
@@ -60,10 +70,10 @@
 
 <div class="control-group">
 
-{{ form_label(form.isDirecto,"Cliente Directo", { 'label_attr': {'class': 'control-label'} }) }}
+{{ form_label(form.codigo,"Código Interno", { 'label_attr': {'class': 'control-label'} }) }}
 <div class="controls">
- {{ form_widget(form.isDirecto, { 'attr': {'class': 'input-xlarge'} }) }}
- <div id='backend_adminbundle_cliente_isDirecto_errorloc' class="help-inline error" >{{ form_errors(form.isDirecto) }}</div>
+ {{ form_widget(form.codigo, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_cliente_codigo_errorloc' class="help-inline error" >{{ form_errors(form.codigo) }}</div>
   
 </div>
 </div>

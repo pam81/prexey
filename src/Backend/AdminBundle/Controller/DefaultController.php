@@ -14,7 +14,7 @@ class DefaultController extends Controller
            return $this->render('BackendAdminBundle:Default:index.html.twig');
        }
        else
-           return $this->redirect($this->generateUrl('viaje_pendientes'));
+           return $this->redirect($this->generateUrl('user'));
         
         
     }

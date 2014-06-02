@@ -20,18 +20,10 @@ class ClienteController extends Controller
          $dql="SELECT u FROM BackendAdminBundle:Cliente u where u.isDelete=false"  ;
         $search=mb_convert_case($search,MB_CASE_LOWER);
         
-        if ($search == 'directo' || $search == 'indirecto')
-        {  
-          if ($search == 'directo')
-           $dql.=" and u.isDirecto = true ";
-          else 
-           $dql.=" and u.isDirecto = false ";
-        } 
-        else
-        {
+       
         if ($search)
           $dql.=" and u.name like '%$search%' ";
-        }  
+          
         $dql .=" order by u.name"; 
         
         return $dql;
@@ -46,23 +38,6 @@ class ClienteController extends Controller
     {
        if ( $this->get('security.context')->isGranted('ROLE_VIEWCLIENTE')) {
         $em = $this->getDoctrine()->getManager();
-
-        /*$dql="SELECT u FROM BackendAdminBundle:Cliente u where u.isDelete=false"  ;
-        $search=mb_convert_case($search,MB_CASE_LOWER);
-        
-        if ($search == 'directo' || $search == 'indirecto')
-        {  
-          if ($search == 'directo')
-           $dql.=" and u.isDirecto = true ";
-          else 
-           $dql.=" and u.isDirecto = false ";
-        } 
-        else
-        {
-        if ($search)
-          $dql.=" and u.name like '%$search%' ";
-        }  
-        $dql .=" order by u.name";   */
         
         $dql=$this->generateSQL($search);
         $query = $em->createQuery($dql);
@@ -262,26 +237,15 @@ class ClienteController extends Controller
             }
            else{
             
-            if ($entity->getIsSpecial())
-           {
-              $this->get('session')->getFlashBag()->add('error' , 'No se puede borrar el cliente logiteck.');
-           }
-           else{ 
+          
             $entity->setIsDelete(true); //baja lógica
             $em->persist($entity);
             $em->flush();
             
-            //deshabilito todos los depositos del cliente
-            $depositos=$entity->getDepositos();
-            foreach($depositos as $d)
-            {
-              $d->setIsDelete(true);
-              $em->persist($d);
-              $em->flush();
-            }
+           
             
             $this->get('session')->getFlashBag()->add('success' , 'Se han borrado los datos del  cliente.');
-            }
+            
             }
         }
 
@@ -323,14 +287,13 @@ class ClienteController extends Controller
                             
         $excelService->excelObj->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'Nombre')
-                    ->setCellValue('B1', 'CUIT')
+                    ->setCellValue('B1', 'Código Interno')
                     ->setCellValue('C1', 'Dirección')
-                    ->setCellValue('D1', 'Observaciones')
-                    ->setCellValue('E1', 'Email')
-                    ->setCellValue('F1', 'Celular')
-                    ->setCellValue('G1', 'Es directo')
-                    
-                    
+                    ->setCellValue('D1', 'Email')
+                    ->setCellValue('E1', 'Teléfono')
+                    ->setCellValue('F1', 'CUIT')
+                    ->setCellValue('G1', 'DNI')
+                    ->setCellValue('H1', 'Observaciones')
                     ;
                     
                     
@@ -343,13 +306,13 @@ class ClienteController extends Controller
          
            $excelService->excelObj->setActiveSheetIndex(0)
                          ->setCellValue("A$i",$r->getName())
-                         ->setCellValue("B$i",$r->getCuit())
+                         ->setCellValue("B$i",$r->getCodigo())
                          ->setCellValue("C$i",$r->getDireccion())
-                         ->setCellValue("D$i",$r->getObservacion())
-                         ->setCellValue("E$i",$r->getEmail())
-                         ->setCellValue("F$i",$r->getCelular())
-                         ->setCellValue("G$i",$r->getIsdirecto())
-                        
+                         ->setCellValue("D$i",$r->getEmail())
+                         ->setCellValue("E$i",$r->getCelular())
+                         ->setCellValue("F$i",$r->getCuit())
+                         ->setCellValue("G$i",$r->getDni())
+                         ->setCellValue("H$i",$r->getObservacion())
                          ;
                 
                            
@@ -366,10 +329,7 @@ class ClienteController extends Controller
         $excelService->excelObj->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
         $excelService->excelObj->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
         $excelService->excelObj->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
-        
-        
-        
-        
+        $excelService->excelObj->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
         
         $fileName="clientes_".date("Ymd").".xls";
         //create the response

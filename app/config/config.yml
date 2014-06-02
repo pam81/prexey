@@ -26,14 +26,6 @@ services:
     user_service:
         class: Backend\UserBundle\Services\UserService
         arguments: ["@doctrine.orm.entity_manager"]
-    patente_unique_validator:
-        class: Backend\AdminBundle\Validator\Constraints\PatenteUniqueValidator
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            -
-                name: validator.constraint_validator
-                alias: patente_unique
     cuit_unique_validator:
         class: Backend\AdminBundle\Validator\Constraints\CuitUniqueValidator
         arguments:
@@ -50,38 +42,6 @@ services:
             -
                 name: validator.constraint_validator
                 alias: code_unique
-    costo_code_unique_validator:
-        class: Backend\AdminBundle\Validator\Constraints\CostoCodeUniqueValidator
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            -
-                name: validator.constraint_validator
-                alias: costo_code_unique  
-    viaje_code_unique_validator:
-        class: Backend\AdminBundle\Validator\Constraints\ViajeCodeUniqueValidator
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            -
-                name: validator.constraint_validator
-                alias: viaje_code_unique                      
-    pendiente_chofer_unique_validator:
-        class: Backend\AdminBundle\Validator\Constraints\PendienteChoferUniqueValidator
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            -
-                name: validator.constraint_validator
-                alias: pendiente_chofer_unique
-    pendiente_camion_unique_validator:
-        class: Backend\AdminBundle\Validator\Constraints\PendienteCamionUniqueValidator
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            -
-                name: validator.constraint_validator
-                alias: pendiente_camion_unique                
     usuario_unique_validator:
         class: Backend\UserBundle\Validator\Constraints\UsuarioUniqueValidator
         arguments:
@@ -98,19 +58,7 @@ services:
             -
                 name: validator.constraint_validator
                 alias: email_unique  
-    empleado_unique_validator:
-        class: Backend\UserBundle\Validator\Constraints\EmpleadoUniqueValidator
-        arguments:
-            - "@doctrine.orm.entity_manager"
-        tags:
-            -
-                name: validator.constraint_validator
-                alias: empleado_unique  
-    backend.form.viajetype:
-        class: Backend\AdminBundle\Form\ViajeType
-        arguments: [  "@security.context", "@doctrine.orm.entity_manager"]
-        tags:
-            - { name: "form.type", alias: "backend_adminbundle_viajetype" }                                                       
+     
 parameters:
     max_on_listepage: 20
     role_default: ROLE_VISITOR # este es asignado por default a quien se registra

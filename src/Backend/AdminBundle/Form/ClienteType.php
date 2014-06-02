@@ -18,11 +18,11 @@ class ClienteType extends AbstractType
             ->add('name')
             ->add('direccion')
             ->add('cuit')
+            ->add('dni')
             ->add('observacion')
             ->add('email')
             ->add('celular')
-            ->add('isDirecto','checkbox', array(
-                  'required'  => false))
+            ->add('codigo')
             
         ;
     }

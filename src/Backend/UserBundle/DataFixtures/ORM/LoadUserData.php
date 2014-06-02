@@ -33,6 +33,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userAdmin->setName("Admin");
         $userAdmin->setLastname("Admin");
         $userAdmin->setIsActive("1");
+        $userAdmin->setCreatedAt(new \DateTime('now'));
         $userAdmin->addGroup($this->getReference('admin-group'));
         $manager->persist($userAdmin);
         $manager->flush();

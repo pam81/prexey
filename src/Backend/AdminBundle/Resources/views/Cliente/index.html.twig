@@ -38,9 +38,13 @@
     <tr>
     
     <th {% if pagination.isSorted('u.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nombre', 'u.name') }}</th>
+    <th>Código Interno</th>
     <th>Dirección</th>
+    <th>Email</th>
+    <th>Teléfono</th>
+    <th>CUIT </th>
+    <th>DNI</th>
     <th>Observaciones</th>
-    <th {% if pagination.isSorted('u.isDirecto') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tipo', 'u.isDirecto') }}</th>
     <th style="width: 36px;">Acciones</th>
     </tr>
     </thead>
@@ -51,26 +55,21 @@
      <tr>
                 
                 <td>{{ cliente.name|capitalize }}</td>
+                <td>{{ cliente.codigo }}</td>
                 <td>{{ cliente.direccion }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.celular }}</td>
+                <td>{{ cliente.cuit }} </td>
+                <td>{{ cliente.dni}}</td>
                 <td>{{ cliente.observacion }}</td>
-                <td>
-                  {% if cliente.isDirecto %}
-                    
-                    <span class="label label-success">Directo</span>
-                   
-                  {% else %}
-                     <span class="label label-important">Indirecto</span> 
-                     
-                  {% endif%}
-                </td>
                 <td>
                 {% if is_granted("ROLE_MODCLIENTE") %}
                 <a href="{{ path('cliente_edit', { 'id': cliente.id }) }}"><i class="icon-pencil"></i></a>
                 {% endif %}
                  {% if is_granted("ROLE_DELCLIENTE") %}
-                 {% if not cliente.getIsSpecial %}
+                
                 <a href="#myModal" role="button" class="confirm-delete" data-toggle="modal" data-id={{ cliente.id }} ><i class="icon-remove"></i></a>
-                 {% endif %}
+                
                  {% endif %}
                 </td>
     </tr>
