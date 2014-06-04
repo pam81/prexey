@@ -49,7 +49,33 @@ class LoadAccesoData extends AbstractFixture implements OrderedFixtureInterface
         $manager->flush();
         $this->addReference('seteos', $accesoAdmin5);
         
+        $accesoAdmin6 = new Acceso();
+        $accesoAdmin6->setName('Nuevo Cliente');
+        $accesoAdmin6->setAcceso('ROLE_ADDCLIENTE');
+        $manager->persist($accesoAdmin6);
+        $manager->flush();
+        $this->addReference('add-cliente', $accesoAdmin6);
         
+        $accesoAdmin7 = new Acceso();
+        $accesoAdmin7->setName('Listar Clientes');
+        $accesoAdmin7->setAcceso('ROLE_VIEWCLIENTE');
+        $manager->persist($accesoAdmin7);
+        $manager->flush();
+        $this->addReference('view-cliente', $accesoAdmin7);
+        
+        $accesoAdmin8 = new Acceso();
+        $accesoAdmin8->setName('Listar Clientes');
+        $accesoAdmin8->setAcceso('ROLE_MODCLIENTE');
+        $manager->persist($accesoAdmin8);
+        $manager->flush();
+        $this->addReference('mod-cliente', $accesoAdmin8);
+        
+        $accesoAdmin9 = new Acceso();
+        $accesoAdmin9->setName('Borrar Clientes');
+        $accesoAdmin9->setAcceso('ROLE_DELCLIENTE');
+        $manager->persist($accesoAdmin9);
+        $manager->flush();
+        $this->addReference('del-cliente', $accesoAdmin9);
         
     }
 
