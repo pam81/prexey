@@ -3,6 +3,7 @@
 namespace Backend\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Sucursal
@@ -69,6 +70,21 @@ class Sucursal
      */
     private $modifiedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AreaTrabajo", mappedBy="sucursal")
+     */
+
+    protected $areas;    
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        
+        $this->areas = new ArrayCollection();
+        $this->createdAt = new \DateTime('now');       
+    }
 
     /**
      * Get id
