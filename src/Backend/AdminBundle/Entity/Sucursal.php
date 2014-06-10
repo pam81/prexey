@@ -6,68 +6,82 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Sucursal
+ * @ORM\Table(name="sucursal")
+ * @ORM\Entity()
  */
+
 class Sucursal
 {
     /**
-     * @var integer
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
+    
     private $id;
 
     /**
-     * @var string
+     * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
 
     /**
-     * @var string
+     * @ORM\Column(name="responsable", type="string", length=100)
      */
+
     private $responsable;
 
     /**
-     * @var string
+     * @ORM\Column(name="calle", type="string", length=100)
      */
+   
     private $calle;
 
     /**
-     * @var integer
+     * @ORM\Column(name="numero", type="integer")
      */
+
     private $numero;
 
     /**
-     * @var integer
-     */
+     * @ORM\Column(name="piso", type="integer")
+     */    
+
     private $piso;
 
     /**
-     * @var string
+     * @ORM\Column(name="cp", type="string")
      */
+    
     private $cp;
 
-    /**
-     * @var string
+     /**
+     * @ORM\Column(name="telefono", type="string")
      */
+
     private $telefono;
 
     /**
-     * @var string
-     */
+     * @ORM\Column(name="fax", type="string", length=100, nullable=true) 
+     */   
+    
     private $fax;
 
     /**
-     * @var string
+     * @ORM\Column(name="email", type="string", length=100, nullable=true) 
      */
     private $email;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(name="created_at", type="datetime")
      */
+    
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(name="modified_at", type="datetime")
      */
+    
     private $modifiedAt;
 
     /**
