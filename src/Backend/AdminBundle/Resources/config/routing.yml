@@ -5,51 +5,7 @@ backend_admin_homepage:
 blank:
     pattern:  /blank
     defaults: { _controller: BackendAdminBundle:Default:blank }
-    
-backend_chofer:
-    resource: "@BackendAdminBundle/Resources/config/routing/chofer.yml"
-    prefix:   /chofer
 
-backend_camion:
-    resource: "@BackendAdminBundle/Resources/config/routing/camion.yml"
-    prefix:   /camion    
-    
 backend_cliente:
     resource: "@BackendAdminBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente    
-
-backend_empresa:
-    resource: "@BackendAdminBundle/Resources/config/routing/empresa.yml"
-    prefix:   /empresa 
-        
-backend_deposito:
-    resource: "@BackendAdminBundle/Resources/config/routing/deposito.yml"
-    prefix:   /deposito    
-
-backend_caja:
-    resource: "@BackendAdminBundle/Resources/config/routing/movimiento.yml"
-    prefix:   /caja    
-
-backend_viaje:
-    resource: "@BackendAdminBundle/Resources/config/routing/viaje.yml"
-    prefix:   /viaje 
-
-backend_tipomovimiento:
-    resource: "@BackendAdminBundle/Resources/config/routing/tipomovimiento.yml"
-    prefix:   /tipomovimiento
-    
-backend_tipocosto:
-    resource: "@BackendAdminBundle/Resources/config/routing/tipocosto.yml"
-    prefix:   /tipocosto    
-
-backend_tipoviaje:
-    resource: "@BackendAdminBundle/Resources/config/routing/tipoviaje.yml"
-    prefix:   /tipoviaje     
-
-backend_reporte:
-    resource: "@BackendAdminBundle/Resources/config/routing/reporte.yml"
-    prefix:   /reporte 
-
-backend_cajaempleado:
-    resource: "@BackendAdminBundle/Resources/config/routing/caja.yml"
-    prefix:   /cajaempleado 

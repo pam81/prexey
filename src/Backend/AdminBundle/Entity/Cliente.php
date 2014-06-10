@@ -2,11 +2,10 @@
 namespace Backend\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Backend\AdminBundle\Validator\Constraints\CuitUnique;
+
 /**
  * @ORM\Table(name="cliente")
  * @ORM\Entity()
- * @CuitUnique()   
  */
 class Cliente
 {

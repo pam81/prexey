@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class CodeUnique extends Constraint
 {
-    public $message = 'Ya existe el código asignado';
+    public $message = 'Ya existe el código asignado al cliente';
     
     public function validatedBy()
     {

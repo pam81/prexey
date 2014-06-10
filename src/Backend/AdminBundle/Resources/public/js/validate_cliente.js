@@ -8,12 +8,20 @@ $(document).ready(function() {
 					maxlength:100,
 				},
 				"backend_adminbundle_cliente[cuit]": {
-					required:true,
+					required:false,
 					minlength:2,
-					maxlength:100,
+					maxlength:20,
+          number: true,
+				},
+        "backend_adminbundle_cliente[dni]": {
+					required:false,
+					minlength:2,
+					maxlength:20,
+          number: true,
 				},
 				"backend_adminbundle_cliente[direccion]": {
 					required:true,
+          minlength:2,
 					maxlength:100,
 				},
 				"backend_adminbundle_cliente[observacion]": {
@@ -27,11 +35,12 @@ $(document).ready(function() {
 				},
 				"backend_adminbundle_cliente[celular]": {
 					required:false,
-					maxlength:100,
+					maxlength:50,
 				},
-				"backend_adminbundle_cliente[isDirecto]": {
-					required:false,
-					
+				"backend_adminbundle_cliente[codigo]": {
+					required:true,
+					minlength: 4,
+          maxlength: 100,
 				}
 				
 			},
@@ -45,11 +54,19 @@ $(document).ready(function() {
             "backend_adminbundle_cliente[cuit]": {
             required: "Ingrese el CUIT del cliente",
             maxlength: jQuery.format("Máximo {0} carácteres!"),
+            minlength: jQuery.format("Mínimo {0} carácteres!"),
+            number: "Ingrese solo números"
+            },
+            "backend_adminbundle_cliente[dni]": {
+            required: "Ingrese el DNI del cliente",
+            number: "Ingrese solo números",
+            maxlength: jQuery.format("Máximo {0} carácteres!"),
             minlength: jQuery.format("Mínimo {0} carácteres!")
             },
             "backend_adminbundle_cliente[direccion]": {
             required: "Ingrese la dirección",
             maxlength:  jQuery.validator.format("Máximo {0} carácteres!"),
+            minlength: jQuery.format("Mínimo {0} carácteres!")
             },
             "backend_adminbundle_cliente[observacion]": {
             maxlength:  jQuery.validator.format("Máximo {0} carácteres!"),
@@ -60,10 +77,12 @@ $(document).ready(function() {
             },
             "backend_adminbundle_cliente[celular]": {
             maxlength:  jQuery.validator.format("Máximo {0} carácteres!"),
-            }
-            
-            
-            
+            },
+            "backend_adminbundle_cliente[codigo]": {
+            required: "Ingrese un código para el cliente",
+            maxlength:  jQuery.validator.format("Máximo {0} carácteres!"),
+            minlength: jQuery.format("Mínimo {0} carácteres!")
+            },
             
       },
       

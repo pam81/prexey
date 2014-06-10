@@ -5,7 +5,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Doctrine\ORM\EntityManager;
 
-class PatenteUniqueValidator extends ConstraintValidator
+class DniUniqueValidator extends ConstraintValidator
 {
     
     private $em;
@@ -19,16 +19,16 @@ class PatenteUniqueValidator extends ConstraintValidator
    public function validate($object, Constraint $constraint)
     {
        
-     //busco una patente igual y que no este borrada
-     $patente = $this->em->getRepository("BackendAdminBundle:Camion")
-                ->findOneBy(array("patente"=>$object->getPatente(), "isDelete"=>false));
+     
+     $code = $this->em->getRepository("BackendAdminBundle:Cliente")
+                ->findOneBy(array("dni"=>$object->getDni(), "isDelete"=>false));
       
-      if ($patente != null)
+      if ($code != null)
       {
-          if ($patente->getId() == $object->getId())
+          if ($code->getId() == $object->getId())
              return true; //es el mismo objecto
           
-          $this->context->addViolationAt("patente",'La patente ya esta en uso!');
+          $this->context->addViolationAt("dni",'Ya existe un cliente con el mismo DNI!');
           return false;     
       }          
       else

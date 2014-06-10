@@ -20,8 +20,8 @@ class CodeUniqueValidator extends ConstraintValidator
     {
        
      //busco una patente igual y que no este borrada
-     $code = $this->em->getRepository("BackendAdminBundle:TipoMovimiento")
-                ->findOneBy(array("code"=>$object->getCode(), "isDelete"=>false));
+     $code = $this->em->getRepository("BackendAdminBundle:Cliente")
+                ->findOneBy(array("codigo"=>$object->getCodigo(), "isDelete"=>false));
       
       if ($code != null)
       {

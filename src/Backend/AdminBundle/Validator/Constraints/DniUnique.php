@@ -6,13 +6,13 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class PendienteCamionUnique extends Constraint
+class DniUnique extends Constraint
 {
-    public $message = 'Ya existe un viaje pendiente para el camión';
+    public $message = 'Ya existe el DNI asignado';
     
     public function validatedBy()
     {
-        return 'pendiente_camion_unique';
+        return 'dni_unique';
     }
 
     public function getTargets()

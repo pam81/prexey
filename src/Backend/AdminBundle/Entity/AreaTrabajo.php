@@ -5,45 +5,66 @@ namespace Backend\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AreaTrabajo
+ * @ORM\Table(name="area")
+ * @ORM\Entity()
  */
 class AreaTrabajo
 {
     /**
-     * @var integer
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
+     * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
 
     /**
-     * @var string
+     * @ORM\Column(name="responsable", type="string", length=100)
      */
     private $responsable;
 
     /**
-     * @var string
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
      */
     private $observaciones;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
-    /**
-     * @var \DateTime
+     /**
+     * @ORM\Column(name="modified_at", type="datetime", nullable=true)
      */
     private $modifiedAt;
 
     /**
-     * @var boolean
+     * @ORM\Column(name="is_habilitada", type="boolean" )
      */
-    private $habilitada;
+    private $isHabilitada;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Sucursal", inversedBy="areas")
+     * @ORM\JoinColumn(name="sucursal_id", referencedColumnName="id")
+     */
+    private $sucursal;
+    
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->isHabilitada=true;
+        $this->createdAt = new \DateTime('now');
+       
+    }
+
+    
 
     /**
      * Get id
@@ -171,25 +192,48 @@ class AreaTrabajo
     }
 
     /**
-     * Set habilitada
+     * Set isHabilitada
      *
-     * @param boolean $habilitada
+     * @param boolean $isHabilitada
      * @return AreaTrabajo
      */
-    public function setHabilitada($habilitada)
+    public function setIsHabilitada($isHabilitada)
     {
-        $this->habilitada = $habilitada;
+        $this->isHabilitada = $isHabilitada;
     
         return $this;
     }
 
     /**
-     * Get habilitada
+     * Get isHabilitada
      *
      * @return boolean 
      */
-    public function getHabilitada()
+    public function getIsHabilitada()
     {
-        return $this->habilitada;
+        return $this->isHabilitada;
+    }
+
+    /**
+     * Set sucursal
+     *
+     * @param \Backend\AdminBundle\Entity\Sucursal $sucursal
+     * @return AreaTrabajo
+     */
+    public function setSucursal(\Backend\AdminBundle\Entity\Sucursal $sucursal = null)
+    {
+        $this->sucursal = $sucursal;
+    
+        return $this;
+    }
+
+    /**
+     * Get sucursal
+     *
+     * @return \Backend\AdminBundle\Entity\Sucursal 
+     */
+    public function getSucursal()
+    {
+        return $this->sucursal;
     }
 }

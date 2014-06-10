@@ -34,6 +34,14 @@ services:
             -
                 name: validator.constraint_validator
                 alias: cuit_unique                
+    dni_unique_validator:
+        class: Backend\AdminBundle\Validator\Constraints\DniUniqueValidator
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            -
+                name: validator.constraint_validator
+                alias: dni_unique
     code_unique_validator:
         class: Backend\AdminBundle\Validator\Constraints\CodeUniqueValidator
         arguments:

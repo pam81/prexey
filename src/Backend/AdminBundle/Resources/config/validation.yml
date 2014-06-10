@@ -1,4 +1,14 @@
 Backend\AdminBundle\Entity\Cliente:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: dni
+            message: "Ya existe un cliente con el mismo DNI"
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: cuit
+            message: "Ya existe un cliente con el mismo CUIT"
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: codigo
+            message: "Ya existe un cliente con el mismo Código Interno"                
     properties:
         name:
             - NotBlank: { message: Olvido ingresar el Nombre / Razón Social }
@@ -17,6 +27,29 @@ Backend\AdminBundle\Entity\Cliente:
         observacion: 
             - Length: 
                 max: 500
-                maxMessage: "La observación puede tener 500 carácteres máximo"  
+                maxMessage: "La observación puede tener 500 carácteres máximo"
+        celular: 
+            - Length: 
+                max: 50
+                maxMessage: "el celular puede tener 50 carácteres máximo"  
         email:
-            - Email: { message: Ingrese un email válido } 
+            - Email: { message: Ingrese un email válido }
+        codigo:
+            - NotBlank: { message: Olvido ingresar el código interno }
+            - Length: 
+                min: 4
+                max: 100
+                minMessage: "El código debe tener al menos 2 carácteres"
+                maxMessage: "El nombre debe tener 100 carácteres máximo" 
+        dni: 
+            - Length: 
+                min: 2
+                max: 20
+                maxMessage: "el DNI puede tener 20 carácteres máximo"
+                minMessage: "el DNI puede tener 2 carácteres mínimo"  
+        cuit: 
+            - Length: 
+                min: 2
+                max: 20
+                maxMessage: "el CUIT puede tener 20 carácteres máximo"
+                minMessage: "el CUIT puede tener 2 carácteres mínimo"                  

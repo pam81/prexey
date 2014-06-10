@@ -50,13 +50,13 @@ class Sucursal
     private $piso;
 
     /**
-     * @ORM\Column(name="cp", type="string")
+     * @ORM\Column(name="cp", type="string", length=100)
      */
     
     private $cp;
 
      /**
-     * @ORM\Column(name="telefono", type="string")
+     * @ORM\Column(name="telefono", type="string", length=100)
      */
 
     private $telefono;
@@ -95,10 +95,11 @@ class Sucursal
      */
     public function __construct()
     {
-        
         $this->areas = new ArrayCollection();
         $this->createdAt = new \DateTime('now');       
     }
+
+  
 
     /**
      * Get id
@@ -361,5 +362,38 @@ class Sucursal
     public function getModifiedAt()
     {
         return $this->modifiedAt;
+    }
+
+    /**
+     * Add areas
+     *
+     * @param \Backend\AdminBundle\Entity\AreaTrabajo $areas
+     * @return Sucursal
+     */
+    public function addArea(\Backend\AdminBundle\Entity\AreaTrabajo $areas)
+    {
+        $this->areas[] = $areas;
+    
+        return $this;
+    }
+
+    /**
+     * Remove areas
+     *
+     * @param \Backend\AdminBundle\Entity\AreaTrabajo $areas
+     */
+    public function removeArea(\Backend\AdminBundle\Entity\AreaTrabajo $areas)
+    {
+        $this->areas->removeElement($areas);
+    }
+
+    /**
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAreas()
+    {
+        return $this->areas;
     }
 }
