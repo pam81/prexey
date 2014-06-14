@@ -26,6 +26,10 @@ class LoadGroupData extends AbstractFixture implements OrderedFixtureInterface
         $groupAdmin->addAcceso($this->getReference('mod-cliente'));
         $groupAdmin->addAcceso($this->getReference('del-cliente'));
         $groupAdmin->addAcceso($this->getReference('view-cliente'));
+        $groupAdmin->addAcceso($this->getReference('add-sucursal'));
+        $groupAdmin->addAcceso($this->getReference('mod-sucursal'));
+        $groupAdmin->addAcceso($this->getReference('del-sucursal'));
+        $groupAdmin->addAcceso($this->getReference('view-sucursal'));
         $manager->persist($groupAdmin);
         $manager->flush();
         $this->addReference('admin-group', $groupAdmin);

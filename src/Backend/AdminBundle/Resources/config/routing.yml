@@ -9,3 +9,7 @@ blank:
 backend_cliente:
     resource: "@BackendAdminBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente    
+
+backend_sucursal:
+    resource: "@BackendAdminBundle/Resources/config/routing/sucursal.yml"
+    prefix:   /sucursal

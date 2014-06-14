@@ -29,6 +29,10 @@
                        <li> <a href="{{ path('cliente') }}"> Clientes</a> </li>
                        <li class="divider"></li>
                        {% endif %}
+                       {% if is_granted('ROLE_VIEWSUCURSAL') %}
+                       <li> <a href="{{ path('sucursal') }}"> Sucursales</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
                       </ul>
                       
                     </li> 

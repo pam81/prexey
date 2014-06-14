@@ -1,10 +1,12 @@
-<?php 
+<?php
+
 namespace Backend\AdminBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @ORM\Table(name="deposito")
- * @ORM\Entity()
+ * @ORM\Entity() 
  */
 class Deposito
 {
@@ -13,101 +15,38 @@ class Deposito
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $id;
+    
+    private $id;
 
     /**
-     * @ORM\Column(name="name", type="string", length=100)
+     * @ORM\Column(name="nombre", type="string", length=100)
      */
-    public $name;
+
+    private $nombre;
 
     /**
-     * @ORM\Column(name="direccion", type="text")
+     * @ORM\Column(name="responsable", type="string", length=100)
      */
-    private $direccion;
+    
+    private $responsable;
+
     /**
-     * @ORM\Column(name="observacion", type="text", nullable=true)
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    private $observacion;
+    
+    private $createdAt;
+
     /**
-     * @ORM\Column(name="lat",type="string", length=100, nullable=true)
+     * @ORM\Column(name="modified_at", type="datetime")
      */
-     private $lat;
+    
+    private $modifiedAt;
+
      /**
-     * @ORM\Column(name="lng", type="string", length=100, nullable=true)
+     * @ORM\ManyToOne(targetEntity="TipoDeposito", inversedBy="depositos")
+     * @ORM\JoinColumn(name="tipodeposito_id", referencedColumnName="id")
      */
-     private $lng; 
-    /**
-     * @ORM\Column(name="is_delete", type="boolean" )
-     */
-    private $isDelete;
-    /**
-     * @ORM\Column(name="is_special", type="boolean" )
-     */
-    private $isSpecial;
-    /**
-     * @ORM\Column(name="saldo", type="decimal", scale=2, nullable=true  )
-     */
-    private $saldo;
-   /**
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="depositos")
-     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
-     */
-    private $cliente;  
-
-
-  /**
-     * @ORM\OneToMany(targetEntity="\Backend\UserBundle\Entity\User", mappedBy="deposito")
-     */
-   private $operarios;
-   
-    /**
-     * @ORM\OneToMany(targetEntity="Movimiento", mappedBy="clase")
-     */
-     
-    private $movimientos; 
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Movimiento", mappedBy="deposito_destino")
-     */
-     
-    private $mov_destinos; 
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Hoja", mappedBy="deposito")
-     */
-     
-     private $hojas;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Hoja", mappedBy="deposito_salida")
-     */
-     
-     private $hojas_salida; 
-     
-   /**
-     * @ORM\OneToMany(targetEntity="Viaje", mappedBy="deposito")
-     */
-     private $viajes;
-
-  public function __construct()
-    {
-        
-        $this->isDelete=false;
-        $this->isSpecial=false;
-        $this->saldo=0;
-        $this->operarios = new ArrayCollection();
-        $this->movimientos = new ArrayCollection();
-        $this->mov_destinos = new ArrayCollection();
-        $this->hojas = new ArrayCollection();
-        $this->hojas_salida = new ArrayCollection();
-        $this->viajes = new ArrayCollection();
-    }
-
-  public function __toString(){
-   
-         return $this->name;
-   }
-
+    private $tipoDeposito;
     /**
      * Get id
      *
@@ -119,407 +58,117 @@ class Deposito
     }
 
     /**
-     * Set name
+     * Set nombre
      *
-     * @param string $name
+     * @param string $nombre
      * @return Deposito
      */
-    public function setName($name)
+    public function setNombre($nombre)
     {
-        $this->name = $name;
+        $this->nombre = $nombre;
     
         return $this;
     }
 
     /**
-     * Get name
+     * Get nombre
      *
      * @return string 
      */
-    public function getName()
+    public function getNombre()
     {
-        return $this->name;
+        return $this->nombre;
     }
 
     /**
-     * Set direccion
+     * Set responsable
      *
-     * @param string $direccion
+     * @param string $responsable
      * @return Deposito
      */
-    public function setDireccion($direccion)
+    public function setResponsable($responsable)
     {
-        $this->direccion = $direccion;
+        $this->responsable = $responsable;
     
         return $this;
     }
 
     /**
-     * Get direccion
+     * Get responsable
      *
      * @return string 
      */
-    public function getDireccion()
+    public function getResponsable()
     {
-        return $this->direccion;
+        return $this->responsable;
     }
 
     /**
-     * Set observacion
+     * Set createdAt
      *
-     * @param string $observacion
+     * @param \DateTime $createdAt
      * @return Deposito
      */
-    public function setObservacion($observacion)
+    public function setCreatedAt($createdAt)
     {
-        $this->observacion = $observacion;
+        $this->createdAt = $createdAt;
     
         return $this;
     }
 
     /**
-     * Get observacion
+     * Get createdAt
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getObservacion()
+    public function getCreatedAt()
     {
-        return $this->observacion;
+        return $this->createdAt;
     }
 
     /**
-     * Set isDelete
+     * Set modifiedAt
      *
-     * @param boolean $isDelete
+     * @param \DateTime $modifiedAt
      * @return Deposito
      */
-    public function setIsDelete($isDelete)
+    public function setModifiedAt($modifiedAt)
     {
-        $this->isDelete = $isDelete;
+        $this->modifiedAt = $modifiedAt;
     
         return $this;
     }
 
     /**
-     * Get isDelete
+     * Get modifiedAt
      *
-     * @return boolean 
+     * @return \DateTime 
      */
-    public function getIsDelete()
+    public function getModifiedAt()
     {
-        return $this->isDelete;
+        return $this->modifiedAt;
     }
 
     /**
-     * Set cliente
+     * Set tipoDeposito
      *
-     * @param \Backend\AdminBundle\Entity\Cliente $cliente
+     * @param \Backend\AdminBundle\Entity\TipoDeposito $tipoDeposito
      * @return Deposito
      */
-    public function setCliente(\Backend\AdminBundle\Entity\Cliente $cliente = null)
+    public function setTipoDeposito(\Backend\AdminBundle\Entity\TipoDeposito $tipoDeposito = null)
     {
-        $this->cliente = $cliente;
+        $this->tipoDeposito = $tipoDeposito;
     
         return $this;
     }
 
     /**
-     * Get cliente
+     * Get tipoDeposito
      *
-     * @return \Backend\AdminBundle\Entity\Cliente 
+     * @return \Backend\AdminBundle\Entity\TipoDeposito 
      */
-    public function getCliente()
+    public function getTipoDeposito()
     {
-        return $this->cliente;
-    }
-
-    /**
-     * Add operarios
-     *
-     * @param \Backend\UserBundle\Entity\User $operarios
-     * @return Deposito
-     */
-    public function addOperario(\Backend\UserBundle\Entity\User $operarios)
-    {
-        $this->operarios[] = $operarios;
-    
-        return $this;
-    }
-
-    /**
-     * Remove operarios
-     *
-     * @param \Backend\UserBundle\Entity\User $operarios
-     */
-    public function removeOperario(\Backend\UserBundle\Entity\User $operarios)
-    {
-        $this->operarios->removeElement($operarios);
-    }
-
-    /**
-     * Get operarios
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getOperarios()
-    {
-        return $this->operarios;
-    }
-
-    /**
-     * Set isSpecial
-     *
-     * @param boolean $isSpecial
-     * @return Deposito
-     */
-    public function setIsSpecial($isSpecial)
-    {
-        $this->isSpecial = $isSpecial;
-    
-        return $this;
-    }
-
-    /**
-     * Get isSpecial
-     *
-     * @return boolean 
-     */
-    public function getIsSpecial()
-    {
-        return $this->isSpecial;
-    }
-
-    /**
-     * Set saldo
-     *
-     * @param float $saldo
-     * @return Deposito
-     */
-    public function setSaldo($saldo)
-    {
-        $this->saldo = $saldo;
-    
-        return $this;
-    }
-
-    /**
-     * Get saldo
-     *
-     * @return float 
-     */
-    public function getSaldo()
-    {
-        return $this->saldo;
-    }
-
-    /**
-     * Add movimientos
-     *
-     * @param \Backend\AdminBundle\Entity\Movimiento $movimientos
-     * @return Deposito
-     */
-    public function addMovimiento(\Backend\AdminBundle\Entity\Movimiento $movimientos)
-    {
-        $this->movimientos[] = $movimientos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove movimientos
-     *
-     * @param \Backend\AdminBundle\Entity\Movimiento $movimientos
-     */
-    public function removeMovimiento(\Backend\AdminBundle\Entity\Movimiento $movimientos)
-    {
-        $this->movimientos->removeElement($movimientos);
-    }
-
-    /**
-     * Get movimientos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMovimientos()
-    {
-        return $this->movimientos;
-    }
-
-    /**
-     * Add mov_destinos
-     *
-     * @param \Backend\AdminBundle\Entity\Movimiento $movDestinos
-     * @return Deposito
-     */
-    public function addMovDestino(\Backend\AdminBundle\Entity\Movimiento $movDestinos)
-    {
-        $this->mov_destinos[] = $movDestinos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove mov_destinos
-     *
-     * @param \Backend\AdminBundle\Entity\Movimiento $movDestinos
-     */
-    public function removeMovDestino(\Backend\AdminBundle\Entity\Movimiento $movDestinos)
-    {
-        $this->mov_destinos->removeElement($movDestinos);
-    }
-
-    /**
-     * Get mov_destinos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMovDestinos()
-    {
-        return $this->mov_destinos;
-    }
-
-    /**
-     * Add hojas
-     *
-     * @param \Backend\AdminBundle\Entity\Hoja $hojas
-     * @return Deposito
-     */
-    public function addHoja(\Backend\AdminBundle\Entity\Hoja $hojas)
-    {
-        $this->hojas[] = $hojas;
-    
-        return $this;
-    }
-
-    /**
-     * Remove hojas
-     *
-     * @param \Backend\AdminBundle\Entity\Hoja $hojas
-     */
-    public function removeHoja(\Backend\AdminBundle\Entity\Hoja $hojas)
-    {
-        $this->hojas->removeElement($hojas);
-    }
-
-    /**
-     * Get hojas
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHojas()
-    {
-        return $this->hojas;
-    }
-
-    /**
-     * Add viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $viajes
-     * @return Deposito
-     */
-    public function addViaje(\Backend\AdminBundle\Entity\Viaje $viajes)
-    {
-        $this->viajes[] = $viajes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove viajes
-     *
-     * @param \Backend\AdminBundle\Entity\Viaje $viajes
-     */
-    public function removeViaje(\Backend\AdminBundle\Entity\Viaje $viajes)
-    {
-        $this->viajes->removeElement($viajes);
-    }
-
-    /**
-     * Get viajes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getViajes()
-    {
-        return $this->viajes;
-    }
-
-    /**
-     * Set lat
-     *
-     * @param string $lat
-     * @return Deposito
-     */
-    public function setLat($lat)
-    {
-        $this->lat = $lat;
-    
-        return $this;
-    }
-
-    /**
-     * Get lat
-     *
-     * @return string 
-     */
-    public function getLat()
-    {
-        return $this->lat;
-    }
-
-    /**
-     * Set lng
-     *
-     * @param string $lng
-     * @return Deposito
-     */
-    public function setLng($lng)
-    {
-        $this->lng = $lng;
-    
-        return $this;
-    }
-
-    /**
-     * Get lng
-     *
-     * @return string 
-     */
-    public function getLng()
-    {
-        return $this->lng;
-    }
-
-    /**
-     * Add hojas_salida
-     *
-     * @param \Backend\AdminBundle\Entity\Hoja $hojasSalida
-     * @return Deposito
-     */
-    public function addHojasSalida(\Backend\AdminBundle\Entity\Hoja $hojasSalida)
-    {
-        $this->hojas_salida[] = $hojasSalida;
-    
-        return $this;
-    }
-
-    /**
-     * Remove hojas_salida
-     *
-     * @param \Backend\AdminBundle\Entity\Hoja $hojasSalida
-     */
-    public function removeHojasSalida(\Backend\AdminBundle\Entity\Hoja $hojasSalida)
-    {
-        $this->hojas_salida->removeElement($hojasSalida);
-    }
-
-    /**
-     * Get hojas_salida
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHojasSalida()
-    {
-        return $this->hojas_salida;
+        return $this->tipoDeposito;
     }
 }

@@ -17,7 +17,7 @@ class SucursalController extends Controller
 
      public function generateSQL($search){
      
-        $dql="SELECT u FROM BackendAdminBundle:Sucursal u "; //where u.isDelete=false"  ;
+        $dql="SELECT u FROM BackendAdminBundle:Sucursal u where u.isDelete=false"  ;
         $search=mb_convert_case($search,MB_CASE_LOWER);
         
        

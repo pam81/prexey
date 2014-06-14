@@ -64,7 +64,7 @@ class LoadAccesoData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('view-cliente', $accesoAdmin7);
         
         $accesoAdmin8 = new Acceso();
-        $accesoAdmin8->setName('Listar Clientes');
+        $accesoAdmin8->setName('Modificar Clientes');
         $accesoAdmin8->setAcceso('ROLE_MODCLIENTE');
         $manager->persist($accesoAdmin8);
         $manager->flush();
@@ -76,6 +76,35 @@ class LoadAccesoData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($accesoAdmin9);
         $manager->flush();
         $this->addReference('del-cliente', $accesoAdmin9);
+        
+        $accesoAdmin10 = new Acceso();
+        $accesoAdmin10->setName('Nueva Sucursal');
+        $accesoAdmin10->setAcceso('ROLE_ADDSUCURSAL');
+        $manager->persist($accesoAdmin10);
+        $manager->flush();
+        $this->addReference('add-sucursal', $accesoAdmin10);
+        
+        $accesoAdmin11 = new Acceso();
+        $accesoAdmin11->setName('Listar Sucursales');
+        $accesoAdmin11->setAcceso('ROLE_VIEWSUCURSAL');
+        $manager->persist($accesoAdmin11);
+        $manager->flush();
+        $this->addReference('view-sucursal', $accesoAdmin11);
+        
+        $accesoAdmin12 = new Acceso();
+        $accesoAdmin12->setName('Modificar Sucursal');
+        $accesoAdmin12->setAcceso('ROLE_MODSUCURSAL');
+        $manager->persist($accesoAdmin12);
+        $manager->flush();
+        $this->addReference('mod-sucursal', $accesoAdmin12);
+        
+        $accesoAdmin13 = new Acceso();
+        $accesoAdmin13->setName('Borrar Sucursl');
+        $accesoAdmin13->setAcceso('ROLE_DELSUCURSAL');
+        $manager->persist($accesoAdmin13);
+        $manager->flush();
+        $this->addReference('del-sucursal', $accesoAdmin13);
+        
         
     }
 
