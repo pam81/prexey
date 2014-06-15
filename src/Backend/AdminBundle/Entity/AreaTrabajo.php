@@ -53,6 +53,11 @@ class AreaTrabajo
      */
     private $sucursal;
     
+    /**
+     * @ORM\Column(name="is_delete", type="boolean" )
+     */
+
+    private $isDelete;
 
     /**
      * Constructor
@@ -235,5 +240,28 @@ class AreaTrabajo
     public function getSucursal()
     {
         return $this->sucursal;
+    }
+
+    /**
+     * Set isDelete
+     *
+     * @param boolean $isDelete
+     * @return AreaTrabajo
+     */
+    public function setIsDelete($isDelete)
+    {
+        $this->isDelete = $isDelete;
+    
+        return $this;
+    }
+
+    /**
+     * Get isDelete
+     *
+     * @return boolean 
+     */
+    public function getIsDelete()
+    {
+        return $this->isDelete;
     }
 }
