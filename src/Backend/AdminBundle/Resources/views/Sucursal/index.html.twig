@@ -28,17 +28,13 @@
     </div>
     
  </div>
-    
-    
-    
-    
+       
     <div class="well">
     <table class="table">
     <thead>
     <tr>
     
     <th {% if pagination.isSorted('u.nombre') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nombre', 'u.nombre') }}</th>
-    <th>Nombre</th>
     <th>Responsable</th>
     <th>Dirección</th>
     <th>Teléfono</th>

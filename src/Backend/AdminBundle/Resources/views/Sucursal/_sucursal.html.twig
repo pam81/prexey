@@ -20,30 +20,40 @@
 
 <div class="control-group">
 
-{{ form_label(form.dni,"DNI", { 'label_attr': {'class': 'control-label'} }) }}
+{{ form_label(form.calle,"Calle", { 'label_attr': {'class': 'control-label'} }) }}
 <div class="controls">
- {{ form_widget(form.dni, { 'attr': {'class': 'input-xlarge'} }) }}
- <div id='backend_adminbundle_sucursal_dni_errorloc' class="help-inline error" >{{ form_errors(form.dni) }}</div>
+ {{ form_widget(form.calle, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sucursal_calle_errorloc' class="help-inline error" >{{ form_errors(form.calle) }}</div>
   
 </div>
 </div>
 
 <div class="control-group">
 
-{{ form_label(form.direccion,"Dirección", { 'label_attr': {'class': 'control-label'} }) }}
+{{ form_label(form.numero,"Número", { 'label_attr': {'class': 'control-label'} }) }}
 <div class="controls">
- {{ form_widget(form.direccion, { 'attr': {'class': 'input-xlarge'} }) }}
- <div id='backend_adminbundle_cliente_direccion_errorloc' class="help-inline error" >{{ form_errors(form.direccion) }}</div>
+ {{ form_widget(form.numero, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sucursal_numero_errorloc' class="help-inline error" >{{ form_errors(form.numero) }}</div>
   
 </div>
 </div>
 
 <div class="control-group">
 
-{{ form_label(form.observacion,"Observaciones", { 'label_attr': {'class': 'control-label'} }) }}
+{{ form_label(form.piso,"Piso", { 'label_attr': {'class': 'control-label'} }) }}
 <div class="controls">
- {{ form_widget(form.observacion, { 'attr': {'class': 'input-xlarge'} }) }}
- <div id='backend_adminbundle_cliente_observacion_errorloc' class="help-inline error" >{{ form_errors(form.observacion) }}</div>
+ {{ form_widget(form.piso, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sucursal_piso_errorloc' class="help-inline error" >{{ form_errors(form.piso) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.cp,"Código Postal", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.cp, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sucursal_cp_errorloc' class="help-inline error" >{{ form_errors(form.cp) }}</div>
   
 </div>
 </div>
@@ -54,7 +64,7 @@
 <div class="controls">
  {{ form_widget(form.email, { 'attr': {'class': 'input-xlarge'} }) }}
  <div id='backend_adminbundle_sucursal_email_errorloc' class="help-inline error" >{{ form_errors(form.email) }}</div>
-  
+ 
 </div>
 </div>
 
@@ -70,10 +80,10 @@
 
 <div class="control-group">
 
-{{ form_label(form.codigo,"Código Interno", { 'label_attr': {'class': 'control-label'} }) }}
+{{ form_label(form.fax,"Fax", { 'label_attr': {'class': 'control-label'} }) }}
 <div class="controls">
- {{ form_widget(form.codigo, { 'attr': {'class': 'input-xlarge'} }) }}
- <div id='backend_adminbundle_cliente_codigo_errorloc' class="help-inline error" >{{ form_errors(form.codigo) }}</div>
+ {{ form_widget(form.fax, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sucursal_fax_errorloc' class="help-inline error" >{{ form_errors(form.fax) }}</div>
   
 </div>
 </div>
