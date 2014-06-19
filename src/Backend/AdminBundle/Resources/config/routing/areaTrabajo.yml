@@ -1,0 +1,30 @@
+areaTrabajo_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:new" }
+
+areaTrabajo_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:exportar" }
+    
+areaTrabajo_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:create" }
+    requirements: { _method: post }
+
+areaTrabajo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:edit" }
+
+areaTrabajo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:update" }
+    requirements: { _method: post|put }
+
+areaTrabajo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:delete" }
+    requirements: { _method: post|delete }
+
+areaTrabajo:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:AreaTrabajo:index" , search: '' }
