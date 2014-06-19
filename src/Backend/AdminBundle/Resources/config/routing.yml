@@ -13,3 +13,13 @@ backend_cliente:
 backend_sucursal:
     resource: "@BackendAdminBundle/Resources/config/routing/sucursal.yml"
     prefix:   /sucursal
+    
+backend_area_trabajo:
+    resource: "@BackendAdminBundle/Resources/config/routing/areaTrabajo.yml"
+    prefix:   /areaTrabajo
+    
+backend_tipo_deposito:
+    resource: "@BackendAdminBundle/Resources/config/routing/tipoDeposito.yml"
+    prefix:   /tipoDeposito
+    
+    

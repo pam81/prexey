@@ -25,9 +25,8 @@ $(document).ready(function() {
 				},
 				"backend_adminbundle_sucursal[piso]": {
 					required:true,
-          			minlength:2,
-					maxlength:8,
-					number: true,
+          			minlength:1,
+					maxlength:3,					
 				},
 				"backend_adminbundle_sucursal[cp]": {
 					required:true,
@@ -35,7 +34,7 @@ $(document).ready(function() {
 					maxlength:10,					
 				},
 				"backend_adminbundle_sucursal[telefono]": {
-					required:false,
+					required:true,
 					minlength:8,
 					maxlength:15,
 				},
