@@ -1,0 +1,14 @@
+<div class="control-group">
+{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sintoma_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
+</div>
+</div>
+<div class="control-group">
+{{ form_label(form.description,"Descripción", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.description, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_sintoma_description_errorloc' class="help-inline error" >{{ form_errors(form.description) }}</div>
+</div>
+</div>

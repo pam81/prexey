@@ -1,0 +1,29 @@
+modelo_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Modelo:new" }
+
+modelo_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Modelo:exportar" }
+    
+modelo_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Modelo:create" }
+    requirements: { _method: post }
+
+modelo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Modelo:edit" }
+
+modelo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Modelo:update" }
+    requirements: { _method: post|put }
+
+modelo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Modelo:delete" }
+    requirements: { _method: post|delete }
+modelo:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Modelo:index" , search: ''}

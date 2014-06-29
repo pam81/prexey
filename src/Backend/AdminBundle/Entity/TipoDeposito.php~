@@ -32,6 +32,8 @@ class TipoDeposito
     
     protected $depositos;
 
+
+
     /**
      * Get id
      *

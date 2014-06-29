@@ -1,0 +1,29 @@
+tipo_articulo_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:new" }
+
+tipo_articulo_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:exportar" }
+    
+tipo_articulo_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:create" }
+    requirements: { _method: post }
+
+tipo_articulo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:edit" }
+
+tipo_articulo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:update" }
+    requirements: { _method: post|put }
+
+tipo_articulo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:delete" }
+    requirements: { _method: post|delete }
+tipo_articulo:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:TipoArticulo:index" , search: ''}

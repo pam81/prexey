@@ -1,0 +1,29 @@
+zona_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Zona:new" }
+
+zona_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Zona:exportar" }
+    
+zona_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Zona:create" }
+    requirements: { _method: post }
+
+zona_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Zona:edit" }
+
+zona_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Zona:update" }
+    requirements: { _method: post|put }
+
+zona_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Zona:delete" }
+    requirements: { _method: post|delete }
+zona:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Zona:index" , search: ''}

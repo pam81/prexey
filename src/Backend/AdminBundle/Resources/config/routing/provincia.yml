@@ -1,0 +1,29 @@
+provincia_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Provincia:new" }
+
+provincia_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Provincia:exportar" }
+    
+provincia_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Provincia:create" }
+    requirements: { _method: post }
+
+provincia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Provincia:edit" }
+
+provincia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Provincia:update" }
+    requirements: { _method: post|put }
+
+provincia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Provincia:delete" }
+    requirements: { _method: post|delete }
+provincia:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Provincia:index" , search: ''}

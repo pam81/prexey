@@ -1,0 +1,29 @@
+marca_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Marca:new" }
+
+marca_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Marca:exportar" }
+    
+marca_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Marca:create" }
+    requirements: { _method: post }
+
+marca_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Marca:edit" }
+
+marca_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Marca:update" }
+    requirements: { _method: post|put }
+
+marca_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Marca:delete" }
+    requirements: { _method: post|delete }
+marca:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Marca:index" , search: ''}

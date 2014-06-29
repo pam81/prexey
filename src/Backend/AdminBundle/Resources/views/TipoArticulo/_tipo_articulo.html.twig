@@ -1,0 +1,16 @@
+<div class="control-group">
+
+{{ form_label(form.name,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.name, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_tipo_articulo_name_errorloc' class="help-inline error" >{{ form_errors(form.name) }}</div>
+</div>
+</div>
+<div class="control-group">
+
+{{ form_label(form.isValido,"Es Válido", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.isValido, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_tipo_articulo_isValido_errorloc' class="help-inline error" >{{ form_errors(form.isValido) }}</div>
+</div>
+</div>

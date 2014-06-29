@@ -1,0 +1,29 @@
+sintoma_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:Sintoma:new" }
+
+sintoma_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:Sintoma:exportar" }
+    
+sintoma_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:Sintoma:create" }
+    requirements: { _method: post }
+
+sintoma_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:Sintoma:edit" }
+
+sintoma_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:Sintoma:update" }
+    requirements: { _method: post|put }
+
+sintoma_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:Sintoma:delete" }
+    requirements: { _method: post|delete }
+sintoma:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:Sintoma:index" , search: ''}

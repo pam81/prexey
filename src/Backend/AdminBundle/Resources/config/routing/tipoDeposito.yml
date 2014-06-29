@@ -1,0 +1,30 @@
+tipoDeposito_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:new" }
+
+tipoDeposito_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:exportar" }
+    
+tipoDeposito_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:create" }
+    requirements: { _method: post }
+
+tipoDeposito_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:edit" }
+
+tipoDeposito_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:update" }
+    requirements: { _method: post|put }
+
+tipoDeposito_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:delete" }
+    requirements: { _method: post|delete }
+
+tipoDeposito:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:TipoDeposito:index" , search: '' }

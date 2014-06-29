@@ -1,0 +1,31 @@
+<div class="control-group">
+{{ form_label(form.tipo,"Tipo", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.tipo, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_articulo_tipo_errorloc' class="help-inline error" >{{ form_errors(form.tipo) }}</div>
+</div>
+</div>
+
+<div class="control-group">
+{{ form_label(form.isDisponible,"Disponible", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.isDisponible, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_articulo_isDisponible_errorloc' class="help-inline error" >{{ form_errors(form.isDisponible) }}</div>
+</div>
+</div>
+
+<div class="control-group">
+{{ form_label(form.descripcion,"Descripción", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.descripcion, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_articulo_descripcion_errorloc' class="help-inline error" >{{ form_errors(form.descripcion) }}</div>
+</div>
+</div>
+
+<div class="control-group">
+{{ form_label(form.observacion,"Observaciones", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.observacion, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_articulo_observacion_errorloc' class="help-inline error" >{{ form_errors(form.observacion) }}</div>
+</div>
+</div>

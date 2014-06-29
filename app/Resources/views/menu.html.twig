@@ -6,7 +6,9 @@
                     <li><a href="{{ path('user') }}">Usuarios</a></li>
                     {% endif %}
                     
-                    {% if  is_granted('ROLE_SETEO') or is_granted('ROLE_ADMIN') %}
+                    {% if  is_granted('ROLE_SETEO') or is_granted('ROLE_ADMIN') or
+                    is_granted('ROLE_VIEWPROVINCIA') or is_granted('ROLE_VIEWZONA') 
+                     %}
                     <li class="dropdown">           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración<b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         {% if is_granted('ROLE_ADMIN') %}
@@ -16,11 +18,23 @@
                             <li class="divider"></li>
                             <li><a href="{{ path('seteo') }}">Seteos</a></li>
                         {% endif %}
+                        {% if is_granted('ROLE_VIEWPROVINCIA') %}
+                            <li class="divider"></li>
+                            <li><a href="{{ path('provincia') }}">Provincias</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_VIEWZONA') %}
+                            <li class="divider"></li>
+                            <li><a href="{{ path('zona') }}">Zonas</a></li>
+                        {% endif %}
                       </ul>
                     </li>
                     {% endif %}
                     
-                    {% if  is_granted('ROLE_VIEWCLIENTE') %}
+                    {% if  is_granted('ROLE_VIEWCLIENTE') or is_granted('ROLE_VIEWSUCURSAL') or
+                       is_granted('ROLE_VIEWMARCA') or  is_granted('ROLE_VIEWMODELO') or 
+                       is_granted('ROLE_VIEWSINTOMA') or is_granted('ROLE_VIEWTIPOARTICULO')
+                       or is_granted('ROLE_VIEWARTICULO')
+                     %}
                     
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Entidades<b class="caret"></b></a>
@@ -31,6 +45,26 @@
                        {% endif %}
                        {% if is_granted('ROLE_VIEWSUCURSAL') %}
                        <li> <a href="{{ path('sucursal') }}"> Sucursales</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWMARCA') %}
+                       <li> <a href="{{ path('marca') }}"> Marcas</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWMODELO') %}
+                       <li> <a href="{{ path('modelo') }}"> Modelos</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWSINTOMA') %}
+                       <li> <a href="{{ path('sintoma') }}"> Sintomas</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWTIPOARTICULO') %}
+                       <li> <a href="{{ path('tipo_articulo') }}"> Tipo Artículos</a> </li>
+                       <li class="divider"></li>
+                       {% endif %}
+                       {% if is_granted('ROLE_VIEWARTICULO') %}
+                       <li> <a href="{{ path('articulo') }}"> Artículos</a> </li>
                        <li class="divider"></li>
                        {% endif %}
                       </ul>

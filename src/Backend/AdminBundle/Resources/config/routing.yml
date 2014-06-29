@@ -10,6 +10,26 @@ backend_cliente:
     resource: "@BackendAdminBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente    
 
+backend_marca:
+    resource: "@BackendAdminBundle/Resources/config/routing/marca.yml"
+    prefix:   /marca    
+
+backend_provincia:
+    resource: "@BackendAdminBundle/Resources/config/routing/provincia.yml"
+    prefix:   /provincia
+    
+backend_zona:
+    resource: "@BackendAdminBundle/Resources/config/routing/zona.yml"
+    prefix:   /zona    
+
+backend_modelo:
+    resource: "@BackendAdminBundle/Resources/config/routing/modelo.yml"
+    prefix:   /modelo    
+
+backend_sintoma:
+    resource: "@BackendAdminBundle/Resources/config/routing/sintoma.yml"
+    prefix:   /sintoma    
+
 backend_sucursal:
     resource: "@BackendAdminBundle/Resources/config/routing/sucursal.yml"
     prefix:   /sucursal
