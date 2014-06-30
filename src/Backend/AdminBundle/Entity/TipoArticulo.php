@@ -35,7 +35,7 @@ class TipoArticulo
      */
     private $isDelete;
     /**
-     * @ORM\OneToMany(targetEntity="Articulos", mappedBy="tipo")
+     * @ORM\OneToMany(targetEntity="Articulo", mappedBy="tipo")
      */
 
     protected $articulos;    
