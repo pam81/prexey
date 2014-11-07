@@ -17,7 +17,7 @@ class TipoArticuloType extends AbstractType
         $builder
             ->add('name')
              ->add('isValido','checkbox', array(
-                  'required'  => false))
+                  'required'  => false));
     }
     
     /**

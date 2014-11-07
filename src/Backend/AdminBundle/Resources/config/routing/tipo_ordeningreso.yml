@@ -1,0 +1,30 @@
+tipo_ordeningreso_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:new" }
+
+tipo_ordeningreso_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:exportar" }
+    
+tipo_ordeningreso_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:create" }
+    requirements: { _method: post }
+
+tipo_ordeningreso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:edit" }
+
+tipo_ordeningreso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:update" }
+    requirements: { _method: post|put }
+
+tipo_ordeningreso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:delete" }
+    requirements: { _method: post|delete }
+    
+tipo_ordeningreso:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:TipoOrdenIngreso:index" , search: ''}

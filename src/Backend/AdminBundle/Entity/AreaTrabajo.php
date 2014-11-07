@@ -3,6 +3,7 @@
 namespace Backend\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="area")
@@ -58,6 +59,13 @@ class AreaTrabajo
      */
 
     private $isDelete;
+   
+     /**
+     * @ORM\ManyToMany(targetEntity="TipoDeposito", inversedBy="areas")
+     * @ORM\JoinTable(name="areas_depositos")
+     */
+     
+	  private $depositos;
 
     /**
      * Constructor
@@ -65,11 +73,11 @@ class AreaTrabajo
     public function __construct()
     {
         $this->isHabilitada=true;
+        $this->isDelete=false;
         $this->createdAt = new \DateTime('now');
+        //$this->depositos = new ArrayCollection();
        
-    }
-
-    
+    }    
 
     /**
      * Get id
@@ -263,5 +271,38 @@ class AreaTrabajo
     public function getIsDelete()
     {
         return $this->isDelete;
+    }
+
+    /**
+     * Add depositos
+     *
+     * @param \Backend\AdminBundle\Entity\TipoDeposito $depositos
+     * @return AreaTrabajo
+     */
+    public function addDeposito(\Backend\AdminBundle\Entity\TipoDeposito $depositos)
+    {
+        $this->depositos[] = $depositos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove depositos
+     *
+     * @param \Backend\AdminBundle\Entity\TipoDeposito $depositos
+     */
+    public function removeDeposito(\Backend\AdminBundle\Entity\TipoDeposito $depositos)
+    {
+        $this->depositos->removeElement($depositos);
+    }
+
+    /**
+     * Get depositos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDepositos()
+    {
+        return $this->depositos;
     }
 }

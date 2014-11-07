@@ -79,7 +79,7 @@ class Sucursal
     private $createdAt;
 
     /**
-     * @ORM\Column(name="modified_at", type="datetime")
+     * @ORM\Column(name="modified_at", type="datetime",nullable=true)
      */
     
     private $modifiedAt;
@@ -322,6 +322,16 @@ class Sucursal
     {
         return $this->email;
     }
+    
+    /**
+     * @ORM\PreUpdate()
+     * 
+     */
+     
+    public function modifiedUpdate(){
+    
+      $this->setModifiedAt(new \DateTime('now'));
+    }  
 
     /**
      * Set createdAt

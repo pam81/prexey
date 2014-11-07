@@ -1,0 +1,40 @@
+<div class="control-group">
+
+{{ form_label(form.nombre,"Nombre", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.nombre, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_areaTrabajo_nombre_errorloc' class="help-inline error" >{{ form_errors(form.nombre) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.responsable,"Responsable", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.responsable, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_areaTrabajo_responsable_errorloc' class="help-inline error" >{{ form_errors(form.responsable) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.observaciones,"Observaciones", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.observaciones, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_areaTrabajo_calle_errorloc' class="help-inline error" >{{ form_errors(form.observaciones) }}</div>
+  
+</div>
+</div>
+
+<div class="control-group">
+
+{{ form_label(form.sucursal,"Sucursal", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+{{ form_widget(form.sucursal, { 'attr': {'class': 'input-xlarge'} }) }}
+    
+  <div id='backend_adminbundle_areaTrabajo_sucursal_errorloc' class="help-inline error" >{{ form_errors(form.sucursal) }}</div>  
+</div>
+</div>  
+

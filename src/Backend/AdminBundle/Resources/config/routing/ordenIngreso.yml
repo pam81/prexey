@@ -1,0 +1,30 @@
+ordenIngreso_new:
+    pattern:  /new
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:new" }
+
+ordenIngreso_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:exportar" }
+    
+ordenIngreso_create:
+    pattern:  /create
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:create" }
+    requirements: { _method: post }
+
+ordenIngreso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:edit" }
+
+ordenIngreso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:update" }
+    requirements: { _method: post|put }
+
+ordenIngreso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:delete" }
+    requirements: { _method: post|delete }
+
+ordenIngreso:
+    pattern:  /{search}
+    defaults: { _controller: "BackendAdminBundle:OrdenIngreso:index" , search: '' }
