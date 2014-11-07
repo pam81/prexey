@@ -24,15 +24,18 @@ class TipoDeposito
      * @ORM\Column(name="nombre", type="string", length=100)
      */
     
-    private $name;
+    private $nombre;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Deposito", mappedBy="tipoDeposito")
+	 /**
+     * @ORM\Column(name="is_delete", type="boolean" )
      */
-    
-    protected $depositos;
-
-
+    private $isDelete;
+      
+    /**
+     * @ORM\ManyToMany(targetEntity="AreaTrabajo", mappedBy="tipo_deposito")
+     */
+        
+    protected $areasTrabajo;
 
     /**
      * Get id
@@ -72,6 +75,7 @@ class TipoDeposito
      */
     public function __construct()
     {
+        $this->isDelete=false;
         $this->depositos = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -106,5 +110,84 @@ class TipoDeposito
     public function getDepositos()
     {
         return $this->depositos;
+    }
+
+    /**
+     * Set isDelete
+     *
+     * @param boolean $isDelete
+     * @return TipoDeposito
+     */
+    public function setIsDelete($isDelete)
+    {
+        $this->isDelete = $isDelete;
+    
+        return $this;
+    }
+
+    /**
+     * Get isDelete
+     *
+     * @return boolean 
+     */
+    public function getIsDelete()
+    {
+        return $this->isDelete;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return TipoDeposito
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Add areasTrabajo
+     *
+     * @param \Backend\AdminBundle\Entity\AreaTrabajo $areasTrabajo
+     * @return TipoDeposito
+     */
+    public function addAreasTrabajo(\Backend\AdminBundle\Entity\AreaTrabajo $areasTrabajo)
+    {
+        $this->areasTrabajo[] = $areasTrabajo;
+    
+        return $this;
+    }
+
+    /**
+     * Remove areasTrabajo
+     *
+     * @param \Backend\AdminBundle\Entity\AreaTrabajo $areasTrabajo
+     */
+    public function removeAreasTrabajo(\Backend\AdminBundle\Entity\AreaTrabajo $areasTrabajo)
+    {
+        $this->areasTrabajo->removeElement($areasTrabajo);
+    }
+
+    /**
+     * Get areasTrabajo
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAreasTrabajo()
+    {
+        return $this->areasTrabajo;
     }
 }

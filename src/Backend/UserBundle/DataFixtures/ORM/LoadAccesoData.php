@@ -301,6 +301,33 @@ class LoadAccesoData extends AbstractFixture implements OrderedFixtureInterface
         $manager->flush();
         $this->addReference('del-tipo-articulo', $accesoAdmin41);
         
+		$accesoAdmin42= new Acceso();
+        $accesoAdmin42->setName('Nuevo Tipo Orden Ingreso');
+        $accesoAdmin42->setAcceso('ROLE_ADDTIPOORDENING');
+        $manager->persist($accesoAdmin42);
+        $manager->flush();
+        $this->addReference('add-tipo-orden-ingreso', $accesoAdmin42);
+        
+        $accesoAdmin43 = new Acceso();
+        $accesoAdmin43->setName('Listar Tipo Ordenes Ingreso');
+        $accesoAdmin43->setAcceso('ROLE_VIEWTIPOORDENING');
+        $manager->persist($accesoAdmin43);
+        $manager->flush();
+        $this->addReference('view-tipo-orden-ingreso', $accesoAdmin43);
+        
+        $accesoAdmin44 = new Acceso();
+        $accesoAdmin44->setName('Modificar Tipo Orden Ingreso');
+        $accesoAdmin44->setAcceso('ROLE_MODTIPOORDENING');
+        $manager->persist($accesoAdmin44);
+        $manager->flush();
+        $this->addReference('mod-tipo-orden-ingreso', $accesoAdmin44);
+        
+        $accesoAdmin45 = new Acceso();
+        $accesoAdmin45->setName('Borrar Tipo Orden Ingreso');
+        $accesoAdmin45->setAcceso('ROLE_DELTIPOORDENING');
+        $manager->persist($accesoAdmin45);
+        $manager->flush();
+        $this->addReference('del-tipo-orden-ingreso', $accesoAdmin45);        
     }
 
     /**

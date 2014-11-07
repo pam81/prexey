@@ -32,11 +32,6 @@ class Provincia
     protected $zonas;    
 
      /**
-     * @ORM\OneToMany(targetEntity="Cliente", mappedBy="provincia")
-     */
-     protected $clientes;
-
-     /**
     
     /**
      * Constructor
@@ -44,7 +39,6 @@ class Provincia
     public function __construct()
     {
         $this->zonas = new ArrayCollection();
-        $this->clientes = new ArrayCollection();
              
     }
     
@@ -118,38 +112,5 @@ class Provincia
     public function getZonas()
     {
         return $this->zonas;
-    }
-
-    /**
-     * Add clientes
-     *
-     * @param \Backend\AdminBundle\Entity\Cliente $clientes
-     * @return Provincia
-     */
-    public function addCliente(\Backend\AdminBundle\Entity\Cliente $clientes)
-    {
-        $this->clientes[] = $clientes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove clientes
-     *
-     * @param \Backend\AdminBundle\Entity\Cliente $clientes
-     */
-    public function removeCliente(\Backend\AdminBundle\Entity\Cliente $clientes)
-    {
-        $this->clientes->removeElement($clientes);
-    }
-
-    /**
-     * Get clientes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getClientes()
-    {
-        return $this->clientes;
     }
 }

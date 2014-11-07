@@ -47,6 +47,14 @@ class Deposito
      * @ORM\JoinColumn(name="tipodeposito_id", referencedColumnName="id")
      */
     private $tipoDeposito;
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Movimiento", mappedBy="deposito")
+     */
+
+    protected $movimientos;   
+    
+    
     /**
      * Get id
      *
@@ -171,5 +179,45 @@ class Deposito
     public function getTipoDeposito()
     {
         return $this->tipoDeposito;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add movimientos
+     *
+     * @param \Backend\AdminBundle\Entity\Movimiento $movimientos
+     * @return Deposito
+     */
+    public function addMovimiento(\Backend\AdminBundle\Entity\Movimiento $movimientos)
+    {
+        $this->movimientos[] = $movimientos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove movimientos
+     *
+     * @param \Backend\AdminBundle\Entity\Movimiento $movimientos
+     */
+    public function removeMovimiento(\Backend\AdminBundle\Entity\Movimiento $movimientos)
+    {
+        $this->movimientos->removeElement($movimientos);
+    }
+
+    /**
+     * Get movimientos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMovimientos()
+    {
+        return $this->movimientos;
     }
 }

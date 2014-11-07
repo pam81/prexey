@@ -24,6 +24,7 @@ tipo_articulo_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "BackendAdminBundle:TipoArticulo:delete" }
     requirements: { _method: post|delete }
+    
 tipo_articulo:
     pattern:  /{search}
     defaults: { _controller: "BackendAdminBundle:TipoArticulo:index" , search: ''}

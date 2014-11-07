@@ -73,16 +73,6 @@ class Cliente
      * @ORM\Column(name="modified_at", type="datetime", nullable=true)
      */
     private $modifiedAt; 
-     /**
-     * @ORM\ManyToOne(targetEntity="Provincia", inversedBy="clientes")
-     * @ORM\JoinColumn(name="provincia_id", referencedColumnName="id", nullable=true)
-     */
-    private $provincia;
-      /**
-     * @ORM\ManyToOne(targetEntity="Zona", inversedBy="clientes")
-     * @ORM\JoinColumn(name="zona_id", referencedColumnName="id", nullable=true)
-     */
-    private $zona;
 
     /**
      * Constructor
@@ -399,51 +389,5 @@ class Cliente
     public function getModifiedAt()
     {
         return $this->modifiedAt;
-    }
-
-    /**
-     * Set provincia
-     *
-     * @param \Backend\AdminBundle\Entity\Provincia $provincia
-     * @return Cliente
-     */
-    public function setProvincia(\Backend\AdminBundle\Entity\Provincia $provincia = null)
-    {
-        $this->provincia = $provincia;
-    
-        return $this;
-    }
-
-    /**
-     * Get provincia
-     *
-     * @return \Backend\AdminBundle\Entity\Provincia 
-     */
-    public function getProvincia()
-    {
-        return $this->provincia;
-    }
-
-    /**
-     * Set zona
-     *
-     * @param \Backend\AdminBundle\Entity\Zona $zona
-     * @return Cliente
-     */
-    public function setZona(\Backend\AdminBundle\Entity\Zona $zona = null)
-    {
-        $this->zona = $zona;
-    
-        return $this;
-    }
-
-    /**
-     * Get zona
-     *
-     * @return \Backend\AdminBundle\Entity\Zona 
-     */
-    public function getZona()
-    {
-        return $this->zona;
     }
 }

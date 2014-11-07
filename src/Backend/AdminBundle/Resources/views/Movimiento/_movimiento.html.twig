@@ -1,0 +1,41 @@
+<div class="control-group">
+{{ form_label(form.documento,"Documento", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.documento, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_ordenIngreso_documento_errorloc' class="help-inline error" >{{ form_errors(form.documento) }}</div>
+</div>
+</div>
+
+<div class="control-group">
+{{ form_label(form.depositoOrigen,"Deposito Origen", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.depositoOrigen, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_movimiento_depositoOrigen_errorloc' class="help-inline error" >{{ form_errors(form.depositoOrigen) }}</div>
+</div>
+</div>
+
+<div class="control-group">
+{{ form_label(form.depositoDestino,"Deposito Destino", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.depositoDestino, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_movimiento_depositoDestino_errorloc' class="help-inline error" >{{ form_errors(form.depositoDestino) }}</div>
+</div>
+</div>
+
+<div class="control-group">
+{{ form_label(form.productos,"Productos", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.productos, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_movimiento_productos_errorloc' class="help-inline error" >{{ form_errors(form.productos) }}</div>
+</div>
+</div>
+
+
+<div class="control-group">
+{{ form_label(form.observaciones,"Observaciones", { 'label_attr': {'class': 'control-label'} }) }}
+<div class="controls">
+ {{ form_widget(form.observaciones, { 'attr': {'class': 'input-xlarge'} }) }}
+ <div id='backend_adminbundle_ordenIngreso_observaciones_errorloc' class="help-inline error" >{{ form_errors(form.observaciones) }}</div>
+</div>
+</div>
+

@@ -51,7 +51,7 @@
                 
                 <td>{{ sucursal.nombre|capitalize }}</td>
                 <td>{{ sucursal.Responsable|capitalize }}</td>
-                <td>{{ sucursal.calle }}</td>
+                <td>{{ sucursal.calle~" "~sucursal.numero}}</td>
                 <td>{{ sucursal.telefono }}</td>
                 <td>{{ sucursal.fax }}</td>
                 <td>{{ sucursal.email }} </td>

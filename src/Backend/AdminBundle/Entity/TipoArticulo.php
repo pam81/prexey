@@ -137,10 +137,10 @@ class TipoArticulo
     /**
      * Add articulos
      *
-     * @param \Backend\AdminBundle\Entity\Articulo $articulos
+     * @param \Backend\AdminBundle\Entity\Articulos $articulos
      * @return TipoArticulo
      */
-    public function addArticulo(\Backend\AdminBundle\Entity\Articulo $articulos)
+    public function addArticulo(\Backend\AdminBundle\Entity\Articulos $articulos)
     {
         $this->articulos[] = $articulos;
     
@@ -150,9 +150,9 @@ class TipoArticulo
     /**
      * Remove articulos
      *
-     * @param \Backend\AdminBundle\Entity\Articulo $articulos
+     * @param \Backend\AdminBundle\Entity\Articulos $articulos
      */
-    public function removeArticulo(\Backend\AdminBundle\Entity\Articulo $articulos)
+    public function removeArticulo(\Backend\AdminBundle\Entity\Articulos $articulos)
     {
         $this->articulos->removeElement($articulos);
     }

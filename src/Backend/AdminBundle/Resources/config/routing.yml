@@ -45,8 +45,19 @@ backend_tipo_deposito:
 backend_tipo_articulo:
     resource: "@BackendAdminBundle/Resources/config/routing/tipo_articulo.yml"
     prefix:   /tipo_articulo
-
+    
 backend_articulo:
     resource: "@BackendAdminBundle/Resources/config/routing/articulo.yml"
-    prefix:   /articulo        
+    prefix:   /articulo
     
+backend_tipo_orden_ingreso:
+    resource: "@BackendAdminBundle/Resources/config/routing/tipo_ordeningreso.yml"
+    prefix:   /tipo_ordeningreso
+    
+backend_orden_ingreso:
+    resource: "@BackendAdminBundle/Resources/config/routing/ordenIngreso.yml"
+    prefix:   /ordenIngreso    
+
+backend_movimiento:
+    resource: "@BackendAdminBundle/Resources/config/routing/movimiento.yml"
+    prefix:   /movimiento    
