@@ -297,7 +297,7 @@ class ModeloController extends Controller
                          ->setCellValue("A$i",$r->getName())
                          ->setCellValue("B$i",$r->getNameManufacture())
                          ->setCellValue("C$i",$r->getVariante())
-                         ->setCellValue("D$i",$r->getMarca())
+                         ->setCellValue("D$i",$r->getMarca()->getName())
                          ;
           $i++;
         }

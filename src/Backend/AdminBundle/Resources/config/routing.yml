@@ -42,4 +42,11 @@ backend_tipo_deposito:
     resource: "@BackendAdminBundle/Resources/config/routing/tipoDeposito.yml"
     prefix:   /tipoDeposito
     
+backend_tipo_articulo:
+    resource: "@BackendAdminBundle/Resources/config/routing/tipo_articulo.yml"
+    prefix:   /tipo_articulo
+
+backend_articulo:
+    resource: "@BackendAdminBundle/Resources/config/routing/articulo.yml"
+    prefix:   /articulo        
     

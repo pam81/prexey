@@ -54,4 +54,116 @@ class TipoArticulo
     }
     
   
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return TipoArticulo
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set isValido
+     *
+     * @param boolean $isValido
+     * @return TipoArticulo
+     */
+    public function setIsValido($isValido)
+    {
+        $this->isValido = $isValido;
+    
+        return $this;
+    }
+
+    /**
+     * Get isValido
+     *
+     * @return boolean 
+     */
+    public function getIsValido()
+    {
+        return $this->isValido;
+    }
+
+    /**
+     * Set isDelete
+     *
+     * @param boolean $isDelete
+     * @return TipoArticulo
+     */
+    public function setIsDelete($isDelete)
+    {
+        $this->isDelete = $isDelete;
+    
+        return $this;
+    }
+
+    /**
+     * Get isDelete
+     *
+     * @return boolean 
+     */
+    public function getIsDelete()
+    {
+        return $this->isDelete;
+    }
+
+    /**
+     * Add articulos
+     *
+     * @param \Backend\AdminBundle\Entity\Articulo $articulos
+     * @return TipoArticulo
+     */
+    public function addArticulo(\Backend\AdminBundle\Entity\Articulo $articulos)
+    {
+        $this->articulos[] = $articulos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove articulos
+     *
+     * @param \Backend\AdminBundle\Entity\Articulo $articulos
+     */
+    public function removeArticulo(\Backend\AdminBundle\Entity\Articulo $articulos)
+    {
+        $this->articulos->removeElement($articulos);
+    }
+
+    /**
+     * Get articulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticulos()
+    {
+        return $this->articulos;
+    }
 }

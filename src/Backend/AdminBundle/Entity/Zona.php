@@ -32,10 +32,18 @@ class Zona
 
     protected $provincia;    
 
-   
+     /**
+     * @ORM\OneToMany(targetEntity="Cliente", mappedBy="zona")
+     */
+     protected $clientes;
    
 
-  
+     public function __construct()
+    {
+        
+        $this->clientes = new ArrayCollection();
+             
+    }
 
     /**
      * Get id
@@ -91,5 +99,38 @@ class Zona
     public function getProvincia()
     {
         return $this->provincia;
+    }
+
+    /**
+     * Add clientes
+     *
+     * @param \Backend\AdminBundle\Entity\Cliente $clientes
+     * @return Zona
+     */
+    public function addCliente(\Backend\AdminBundle\Entity\Cliente $clientes)
+    {
+        $this->clientes[] = $clientes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove clientes
+     *
+     * @param \Backend\AdminBundle\Entity\Cliente $clientes
+     */
+    public function removeCliente(\Backend\AdminBundle\Entity\Cliente $clientes)
+    {
+        $this->clientes->removeElement($clientes);
+    }
+
+    /**
+     * Get clientes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClientes()
+    {
+        return $this->clientes;
     }
 }

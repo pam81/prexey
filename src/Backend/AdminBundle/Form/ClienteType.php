@@ -1,7 +1,7 @@
 <?php
 
 namespace Backend\AdminBundle\Form;
-
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -23,6 +23,14 @@ class ClienteType extends AbstractType
             ->add('email')
             ->add('celular')
             ->add('codigo')
+             ->add('provincia', 'entity',array(
+            'class'=>'BackendAdminBundle:Provincia',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder("u")
+                         ->select("u")
+                         ->orderBy('u.name', 'ASC');
+                      
+            }))
             
         ;
     }
